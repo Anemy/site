@@ -20,7 +20,7 @@ var lastTime;
 var ratio = 1;
 
 //for drawing the floor
-var floorSize = 30; //based on orig height
+var floorSize = 20; //based on orig height
 
 //images
 var dogRm = [];
@@ -31,6 +31,7 @@ var dogL;
 var RIGHT = 1;
 var LEFT = 0;
 
+//position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
 var pop;
 var jumpSpeed = 30 * fps;//was then 25
@@ -51,10 +52,25 @@ var dogBase = function () {
     this.runCount = 0;
 
     this.jump = false;
+    this.space = false;
 
     //square dimensions
     this.width = 30;
 };
+
+var blocks = [];
+var blockSpeed = 15 * fps;
+
+var currentMaxSize = 20;
+
+var block = function() {
+    this.xPos = 0;
+    this.yPos = 0;
+
+    //square dimensions
+    this.width = 30;
+    this.colors = [];
+}
 
 function init() {
     canvas = document.getElementById('backgroundCanvas');
@@ -100,7 +116,7 @@ function loadImages() {
 function resetGame() {
     pop = new dogBase();
     pop.xPos = originalWidth/2;
-    pop.yPos = originalHeight/2;
+    pop.yPos = originalHeight - pop.width;
 }
 
 function gameLoop() {
@@ -123,9 +139,9 @@ function render() {
     //console.log("DogX: " + pop.xPos + "  -  " + pop.yPos);
 
     ctx.fillStyle = "rgb(0,0,0)";
-    ctx.fillRect(0, yScale * (1000-floorSize), gameWidth, 4*yScale);
-    ctx.fillRect(0, yScale * (1000-floorSize) + 8*yScale, gameWidth, 2*yScale);
-    ctx.fillRect(0, yScale * (1000-floorSize) + 14*yScale, gameWidth, 1*yScale);
+    ctx.fillRect(0, (gameHeight-floorSize), gameWidth, 4);
+    ctx.fillRect(0, (gameHeight-floorSize) + 8, gameWidth, 2);
+    ctx.fillRect(0, (gameHeight-floorSize) + 14, gameWidth, 1);
 }
 
 function drawPop() {
@@ -153,19 +169,32 @@ function drawPop() {
             dogImage = dogR;
 
     }
-    //console.log("PLZ " + gameHeight * (pop.yPos/originalHeight));
-    if(yScale < scale)
-        ctx.drawImage(dogImage, pop.xPos * scale, gameHeight * (pop.yPos/originalHeight) - pop.width * (yScale/scale) , pop.width * scale, pop.width * scale);
-    else
-        ctx.drawImage(dogImage, pop.xPos * scale, gameHeight * (pop.yPos/originalHeight), pop.width * scale, pop.width * scale);
+    //console.log("Yo the dog: " + pop.width +" scaled to: "+ pop.width*scale + " Attempted subtract: " + ((pop.width*scale) - pop.width));
+    //console.log("PLZ " + (gameHeight - pop.yPos - ((pop.width*scale) - pop.width)));
+    // if(yScale < scale)
+    //     ctx.drawImage(dogImage, pop.xPos * scale, gameHeight * (pop.yPos/originalHeight) - ((pop.width*scale) - pop.width) , pop.width * scale, pop.width * scale);
+    // else
+        ctx.drawImage(dogImage, pop.xPos * scale, gameHeight - pop.yPos, pop.width, pop.width);
 }
 
 function update(delta) {
     updateDogPos(delta);
+
+    updateBlocks(delta);
+
+    checkCollisions();
+}
+
+function checkCollisions() {
+
+}
+
+function updateBlocks(delta) {
+
 }
 
 function updateDogPos(modifier) {
-    pop.yDir = pop.yDir + playerFallSpeed * modifier;
+    pop.yDir = pop.yDir - playerFallSpeed * modifier;
 
     pop.runCount = pop.runCount + fps * modifier;
     if (pop.runCount >= 14) {
@@ -195,10 +224,17 @@ function updateDogPos(modifier) {
     }
 
     //bottom collision
-    if (pop.yPos + (pop.yDir * modifier) > originalWidth - floorSize - pop.width) {
-        pop.yDir = 0;
-        pop.yPos = originalWidth - floorSize - pop.width + 1;
-        pop.jump = false;
+    if (pop.yPos + (pop.yDir * modifier) < floorSize + pop.width) {
+        if(pop.space) {
+            pop.jump = true;
+            pop.yPos = floorSize + pop.width;
+            pop.yDir = jumpSpeed;
+        }
+        else {
+            pop.yDir = 0;
+            pop.yPos = floorSize + pop.width;
+            pop.jump = false;
+        }
     }
 
     pop.xPos = pop.xPos + (pop.xDir * modifier);
@@ -224,8 +260,9 @@ function keyPressed(e) {
     }
     if (key == 38 || key == 32) {
         if (pop.jump == false) {
+            pop.space = true;
             pop.jump = true;
-            pop.yDir = -jumpSpeed;
+            pop.yDir = jumpSpeed;
         }
     }
 }
@@ -243,7 +280,8 @@ function keyReleased(e) {
         pop.right = false;
     }
 
-    if(upKey == 32) {
+    if(upKey == 32 || upKey == 38) {
+        pop.space = false;
         //space
     }
 }
