@@ -163,7 +163,14 @@ function render() {
 function drawBlocks() {
     for(var i = 0; i < blocks.length; i++) {
         ctx.fillStyle = "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + ", " + blocks[i].colors[2] + ")";
-        ctx.fillRect(blocks[i].xPos, gameHeight - blocks[i].height - floorSize, blocks[i].width, blocks[i].height);
+        ctx.fillRect(blocks[i].xPos * scale, gameHeight - blocks[i].height - floorSize, blocks[i].width, blocks[i].height);
+        //draw inner block design
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = "3";
+        ctx.rect(blocks[i].xPos * scale, gameHeight - blocks[i].height - floorSize, blocks[i].width, blocks[i].height);
+        //ctx.rect(blocks[i].xPos * scale + 2, gameHeight - blocks[i].height - floorSize + 2, blocks[i].width - 4, blocks[i].height - 1);
+        ctx.stroke();
     }
 }
 
@@ -286,11 +293,11 @@ function updateBlocks(delta) {
                 blockSpeed += 4;
 
             if(spawnRate < 0.5)
-                spawnRate -= 0.001
+                spawnRate -= 0.001;
             else if(spawnRate < 1)
                 spawnRate -= 0.005;
             else
-                spawnRate -= 0.01;
+                spawnRate -= 0.05;
             //spawnChance += 0.01;
         }
     }
