@@ -67,6 +67,8 @@ var spawnRate = 2;//how many seconds
 var spawnChance = 0.5;
 var spawnCount = 0;
 
+var keepUpdating;
+
 var block = function() {
     this.xPos = 0;
     this.yPos = 0;
@@ -128,6 +130,8 @@ function resetGame() {
     currentMaxSize = 100;
     spawnRate = 1;//how many seconds
     spawnChange = 0.5;
+
+    keepUpdating = true;
 }
 
 function gameLoop() {
@@ -135,7 +139,7 @@ function gameLoop() {
 
     var deltaTime = (currentTime - lastTime)/1000;
 
-    if(deltaTime < 0.1) //dont allow when they come out and into tab for one iteration
+    if(deltaTime < 0.2 && keepUpdating) //dont allow when they come out and into tab for one iteration
         update(deltaTime);
 
     render();
@@ -197,6 +201,8 @@ function drawPop() {
 }
 
 function update(delta) {
+    checkCollisions();
+
     updateDogPos(delta);
 
     updateBlocks(delta);
@@ -205,7 +211,24 @@ function update(delta) {
 }
 
 function checkCollisions() {
+    for(var i = 0; i < blocks.length; i++) {
+        //x collide
+        if((blocks[i].xPos >= pop.xPos && blocks[i].xPos <= pop.xPos + pop.width)
+            //|| (blocks[i].xPos >= pop.xPos && blocks[i].xPos <= pop.xPos + pop.width)
+            || (blocks[i].xPos <= pop.xPos && blocks[i].xPos + blocks[i].width >= pop.xPos))  {
 
+            //y collide
+            if(pop.yPos - pop.width - floorSize < blocks[i].height) {
+                console.log("It's a hit!");
+                //blocks.splice(i,1);
+                killPop();
+            }
+        }
+    }
+}
+
+function killPop() {
+    keepUpdating = false;
 }
 
 function updateBlocks(delta) {
@@ -252,13 +275,16 @@ function updateBlocks(delta) {
 
 
             //adjusting difficulty
-            currentMaxSize += 1;
+            if(currentMaxSize < 400)
+                currentMaxSize += 1;
+
             if(blockSpeed > 1000)
                 blockSpeed += 0.5;
             else if(blockSpeed > 500)
                 blockSpeed += 2;
             else
                 blockSpeed += 4;
+
             if(spawnRate < 0.5)
                 spawnRate -= 0.001
             else if(spawnRate < 1)
