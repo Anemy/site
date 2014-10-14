@@ -59,16 +59,21 @@ var dogBase = function () {
 };
 
 var blocks = [];
-var blockSpeed = 15 * fps;
+var blockSpeed = 10 * fps;
+//var amountOfBlocks;
 
-var currentMaxSize = 20;
+var currentMaxSize = 100;
+var spawnRate = 2;//how many seconds
+var spawnChance = 0.5;
+var spawnCount = 0;
 
 var block = function() {
     this.xPos = 0;
     this.yPos = 0;
 
     //square dimensions
-    this.width = 30;
+    this.height = 80;
+    this.width = 36;
     this.colors = [];
 }
 
@@ -85,7 +90,7 @@ function init() {
     scale = gameWidth/originalWidth;
     yScale = gameHeight/originalHeight;
 
-    console.log("Canvas created, dimensions: " + gameWidth + "x"+gameHeight+" scaling: "+scale);
+    console.log("Canvas created, dimensions: " + gameWidth + "x" + gameHeight + " scaling: " + scale);
 
     lastTime = Date.now();
 
@@ -117,6 +122,12 @@ function resetGame() {
     pop = new dogBase();
     pop.xPos = originalWidth/2;
     pop.yPos = originalHeight - pop.width;
+
+    blockSpeed = 8 * fps;
+
+    currentMaxSize = 100;
+    spawnRate = 1;//how many seconds
+    spawnChange = 0.5;
 }
 
 function gameLoop() {
@@ -136,12 +147,20 @@ function render() {
     ctx.clearRect(0, 0, gameWidth, gameHeight);
 
     drawPop();
+    drawBlocks();
     //console.log("DogX: " + pop.xPos + "  -  " + pop.yPos);
 
     ctx.fillStyle = "rgb(0,0,0)";
     ctx.fillRect(0, (gameHeight-floorSize), gameWidth, 4);
     ctx.fillRect(0, (gameHeight-floorSize) + 8, gameWidth, 2);
     ctx.fillRect(0, (gameHeight-floorSize) + 14, gameWidth, 1);
+}
+
+function drawBlocks() {
+    for(var i = 0; i < blocks.length; i++) {
+        ctx.fillStyle = "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + ", " + blocks[i].colors[2] + ")";
+        ctx.fillRect(blocks[i].xPos, gameHeight - blocks[i].height - floorSize, blocks[i].width, blocks[i].height);
+    }
 }
 
 function drawPop() {
@@ -191,6 +210,64 @@ function checkCollisions() {
 
 function updateBlocks(delta) {
 
+    for(var i = 0; i < blocks.length; i++) {
+        //console.log("Update with x Pos: " + blocks[i].xPos);
+
+        blocks[i].xPos -= blockSpeed*delta;
+        if(blocks[i].xPos < -blocks[i].width - 5) {
+            blocks.splice(i,1);
+        }
+    }
+
+    //see if new blocks be needed
+    spawnCount += delta;
+    //console.log(spawnCount+" > "+spawnRate+"  yah  "+delta);
+    if(spawnCount > spawnRate) {
+        spawnCount = 0;
+
+        if(Math.random() < spawnChance) {
+            console.log("New block!!");
+
+            //Add a new block!!!
+            var newBlock = new block();
+            newBlock.xPos = originalWidth + 5 + newBlock.width;
+            newBlock.height = currentMaxSize * (0.3 + (0.7*Math.random()));
+
+            //choose the colors
+            var colorChance = Math.random() * 30;
+            var r = Math.random()*255;
+            var g = Math.random()*255;
+            var b = Math.random()*255;
+            if(colorChance > 20)
+                r = 0;
+            else if(colorChance > 10)
+                g = 0;
+            else
+                b = 0;
+            newBlock.colors[0] = Math.floor(r);
+            newBlock.colors[1] = Math.floor(g);
+            newBlock.colors[2] = Math.floor(b);
+            console.log("New color: "+newBlock.colors);
+            blocks.unshift(newBlock);
+
+
+            //adjusting difficulty
+            currentMaxSize += 1;
+            if(blockSpeed > 1000)
+                blockSpeed += 0.5;
+            else if(blockSpeed > 500)
+                blockSpeed += 2;
+            else
+                blockSpeed += 4;
+            if(spawnRate < 0.5)
+                spawnRate -= 0.001
+            else if(spawnRate < 1)
+                spawnRate -= 0.005;
+            else
+                spawnRate -= 0.01;
+            //spawnChance += 0.01;
+        }
+    }
 }
 
 function updateDogPos(modifier) {
