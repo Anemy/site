@@ -79,6 +79,15 @@ var block = function() {
     this.colors = [];
 }
 
+//half the time returns the val as negative
+function getNegative (toNegate) {
+    if(Math.random() * 100 > 50)
+        return -toNegate;
+    else
+        return toNegate;
+}
+
+
 function init() {
     canvas = document.getElementById('backgroundCanvas');
     ctx = canvas.getContext('2d');
@@ -121,17 +130,29 @@ function loadImages() {
 }
 
 function resetGame() {
+    //create dog
     pop = new dogBase();
     pop.xPos = originalWidth/2;
     pop.yPos = originalHeight - pop.width;
 
+    //block variables
     blockSpeed = 8 * fps;
-
     currentMaxSize = 100;
     spawnRate = 1;//how many seconds
     spawnChange = 0.5;
 
     keepUpdating = true;
+
+    //particles and messages
+    parts = [];
+    for(i = 0; i < numberOfParts; i++) {
+        parts[i] = new part(false, 0,0,0,0, 0);
+    }
+
+    MSGs = [];
+    for(i = 0; i < numberOfMsg; i++) {
+        MSGs[i] = new msg(false, 0,0,"white");
+    }
 }
 
 function gameLoop() {
@@ -139,7 +160,7 @@ function gameLoop() {
 
     var deltaTime = (currentTime - lastTime)/1000;
 
-    if(deltaTime < 0.2 && keepUpdating) //dont allow when they come out and into tab for one iteration
+    if(deltaTime < 0.2) //dont allow when they come out and into tab for one iteration
         update(deltaTime);
 
     render();
@@ -152,6 +173,8 @@ function render() {
 
     drawPop();
     drawBlocks();
+    drawParts(ctx);
+    drawMSGs(ctx);
     //console.log("DogX: " + pop.xPos + "  -  " + pop.yPos);
 
     ctx.fillStyle = "rgb(0,0,0)";
@@ -208,14 +231,26 @@ function drawPop() {
 }
 
 function update(delta) {
-    checkCollisions();
+    if(keepUpdating) {
+        checkCollisions();
 
-    updateDogPos(delta);
+        updateDogPos(delta);
 
-    updateBlocks(delta);
+        updateBlocks(delta);
+    }
 
-    checkCollisions();
+    updateMSGs(delta);
+    updateParts(delta);
 }
+
+/* Adding a new message:
+for(k = 0; k < numberOfMsg; k++) {
+    if(harvMSGs[k].alive == false) {
+        harvMSGs[k] = new harvestMSG(true, drops[i].imageID, hero.x, hero.y - hero.height/2);
+        break;
+    }
+}
+*/
 
 function checkCollisions() {
     for(var i = 0; i < blocks.length; i++) {
@@ -226,7 +261,7 @@ function checkCollisions() {
 
             //y collide
             if(pop.yPos - pop.width - floorSize < blocks[i].height) {
-                console.log("It's a hit!");
+                //console.log("It's a hit!");
                 //blocks.splice(i,1);
                 killPop();
             }
@@ -236,6 +271,32 @@ function checkCollisions() {
 
 function killPop() {
     keepUpdating = false;
+
+    setTimeout( function() {
+        //particles for doggy death
+        var numberOfPartsToAdd = 50;
+        for(k = 0; k < numberOfParts; k++) {
+            if(parts[k].alive == false) {
+                numberOfPartsToAdd--;
+                if(numberOfPartsToAdd == 0)
+                    break;
+                parts[k] = new part(true,
+                    pop.xPos + pop.width/2 + Math.random()*getNegative(pop.width/2),pop.yPos - pop.width/2 + Math.random()*getNegative(pop.width/2),
+                    getNegative(Math.random()*maxPartSpeed),
+                    -(Math.random()*maxPartSpeed + minPartSpeed),
+                    "black");
+                parts[k].rotation = Math.random()*359.0;
+                parts[k].rotationVelo = getNegative(Math.random()*359.0);
+
+                //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
+            }
+        }
+
+        pop.xPos = -gameWidth;
+
+        //start a new game
+        setTimeout(function(){resetGame();},2000);
+    }, 500);
 }
 
 function updateBlocks(delta) {
@@ -245,6 +306,24 @@ function updateBlocks(delta) {
 
         blocks[i].xPos -= blockSpeed*delta;
         if(blocks[i].xPos < -blocks[i].width - 5) {
+            //particles for doggy death
+            var numberOfPartsToAdd = 25;
+            for(k = 0; k < numberOfParts; k++) {
+                if(parts[k].alive == false) {
+                    numberOfPartsToAdd--;
+                    if(numberOfPartsToAdd == 0)
+                        break;
+                    parts[k] = new part(true,
+                        blocks[i].xPos + blocks[i].width,floorSize + blocks[i].yPos - Math.random()*getNegative(blocks[i].height),
+                        Math.random()*maxPartSpeed,
+                        -(Math.random()*maxPartSpeed + minPartSpeed),
+                        "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
+                    parts[k].rotation = Math.random()*359.0;
+                    parts[k].rotationVelo = getNegative(Math.random()*359.0);
+
+                    //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
+                }
+            }
             blocks.splice(i,1);
         }
     }
@@ -256,7 +335,7 @@ function updateBlocks(delta) {
         spawnCount = 0;
 
         if(Math.random() < spawnChance) {
-            console.log("New block!!");
+            //console.log("New block!!");
 
             //Add a new block!!!
             var newBlock = new block();
@@ -277,7 +356,7 @@ function updateBlocks(delta) {
             newBlock.colors[0] = Math.floor(r);
             newBlock.colors[1] = Math.floor(g);
             newBlock.colors[2] = Math.floor(b);
-            console.log("New color: "+newBlock.colors);
+            //console.log("New color: "+newBlock.colors);
             blocks.unshift(newBlock);
 
 
