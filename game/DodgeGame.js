@@ -114,6 +114,12 @@ function init() {
 
     loadImages();
 
+    //particles
+    parts = [];
+    for(i = 0; i < numberOfParts; i++) {
+        parts[i] = new part(false, 0,0,0,0, 0);
+    }
+
     resetGame();
 
     MSGs[0] = new msg(true, "Use arrow keys to control! Space to Jump!", gameWidth/2 - 100, floorSize + pop.width/2,1, "black");
@@ -162,12 +168,6 @@ function resetGame() {
     spawnChange = 0.5;
 
     keepUpdating = true;
-
-    //particles and messages
-    parts = [];
-    for(i = 0; i < numberOfParts; i++) {
-        parts[i] = new part(false, 0,0,0,0, 0);
-    }
 
     MSGs = [];
     for(i = 0; i < numberOfMsg; i++) {
@@ -253,6 +253,7 @@ function drawPop() {
         ctx.drawImage(dogImage, pop.xPos * scale, gameHeight - pop.yPos, pop.width, pop.width);
 }
 
+//call all game updates
 function update(delta) {
     if(keepUpdating) {
         checkCollisions();
@@ -266,6 +267,7 @@ function update(delta) {
     updateParts(delta);
 }
 
+//dog/block collisions
 function checkCollisions() {
     for(var i = 0; i < blocks.length; i++) {
         //x collide
@@ -287,6 +289,7 @@ function checkCollisions() {
     }
 }
 
+//kill the dog and call the game reset
 function killPop() {
     keepUpdating = false;
 
@@ -311,6 +314,32 @@ function killPop() {
         }
 
         pop.xPos = -gameWidth;
+
+        //explode the blocks after a bit
+        setTimeout(function() {
+            for(var i = 0; i < blocks.length; i++) {
+                //particles for block death
+                var numberOfPartsToAdd = 30;
+                for(k = 0; k < numberOfParts; k++) {
+                    if(parts[k].alive == false) {
+                        numberOfPartsToAdd--;
+                        if(numberOfPartsToAdd == 0)
+                            break;
+                        parts[k] = new part(true,
+                            blocks[i].xPos + Math.random()*getNegative(blocks[i].width),floorSize + blocks[i].yPos - Math.random()*getNegative(blocks[i].height),
+                            getNegative(Math.random()*maxPartSpeed),
+                            -(Math.random()*maxPartSpeed + minPartSpeed),
+                            "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
+                        parts[k].rotation = Math.random()*359.0;
+                        parts[k].rotationVelo = getNegative(Math.random()*359.0);
+
+                        //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
+                    }
+                }
+            }
+
+            blocks = [];
+        }, 1000);
 
         //start a new game
         setTimeout(function(){resetGame();},2000);
