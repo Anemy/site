@@ -1,7 +1,7 @@
 var MSGs = [];
 var numberOfMsg = 10;
 var MSGSpeed = 80.0;
-var msg = function (alive, text, x, y, color) {
+var msg = function (alive, text, x, y, dir, color) {
     this.x = x;
     this.y = y;
     this.text = text;
@@ -9,13 +9,14 @@ var msg = function (alive, text, x, y, color) {
     this.life = 100;
     this.alive = alive;
     this.colorType = color;
+    this.dir = dir;
 }
 
 //harvest messages
 var updateMSGs = function(delta) {
     for(k = 0; k < numberOfMsg; k++) {
         if(MSGs[k].alive == true) {
-            MSGs[k].y = MSGs[k].y + MSGSpeed*delta;
+            MSGs[k].y = MSGs[k].y + MSGSpeed*delta * MSGs[k].dir;
             MSGs[k].life -= 40*delta;
             if(MSGs[k].life < 1)
                 MSGs[k].alive = false;

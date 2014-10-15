@@ -34,6 +34,9 @@ var LEFT = 0;
 var jumpingOverBlock = false;
 
 var score = 0;
+var currentCombo = 0;
+var comboEnded = true;
+var firstTimeFalling = true;
 
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
@@ -113,10 +116,10 @@ function init() {
 
     resetGame();
 
-    MSGs[0] = new msg(true, "Use arrow keys to control! Space to Jump!", gameWidth/2 - 100, floorSize + pop.width/2, "black");
+    MSGs[0] = new msg(true, "Use arrow keys to control! Space to Jump!", gameWidth/2 - 100, floorSize + pop.width/2,1, "black");
 
     setTimeout(function() {
-        MSGs[1] = new msg(true, "WATCH OUT!!!!", gameWidth - gameWidth/6, floorSize + pop.width/2, "black");
+        MSGs[1] = new msg(true, "WATCH OUT!!!!", gameWidth - gameWidth/6, floorSize + pop.width/2,1, "black");
     }, 2000);
 
     //start the game loop
@@ -146,6 +149,9 @@ function resetGame() {
     pop.yPos = originalHeight - pop.width;
 
     score = 0;
+    currentCombo = 0;
+    comboEnded = false;
+    firstTimeFalling = true;
 
     jumpingOverBlock = false;
 
@@ -165,7 +171,7 @@ function resetGame() {
 
     MSGs = [];
     for(i = 0; i < numberOfMsg; i++) {
-        MSGs[i] = new msg(false, "lol",0,0,"white");
+        MSGs[i] = new msg(false, "lol",0,0,1,"white");
     }
 }
 
@@ -327,7 +333,7 @@ function updateBlocks(delta) {
 
         blocks[i].xPos -= blockSpeed*delta;
         if(blocks[i].xPos < -blocks[i].width - 5) {
-            //particles for doggy death
+            //particles for block death
             var numberOfPartsToAdd = 25;
             for(k = 0; k < numberOfParts; k++) {
                 if(parts[k].alive == false) {
@@ -346,7 +352,6 @@ function updateBlocks(delta) {
                 }
             }
             blocks.splice(i,1);
-            score++;
         }
     }
 
@@ -440,14 +445,60 @@ function updateDogPos(modifier) {
             pop.jump = true;
             pop.yPos = floorSize + pop.width;
             pop.yDir = jumpSpeed;
+
+            //combo
+            comboEnded = false;
+            if(!jumpingOverBlock) {
+                if(currentCombo > 1) {
+                    for(k = 0; k < numberOfMsg; k++) {
+                        if(MSGs[k].alive == false) {
+                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,-1, "black");
+                            //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
+                            break;
+                        }
+                    }
+                    score += currentCombo;
+                }
+                comboEnded = true;
+                currentCombo = 0;
+            }
+
         }
         else {
+            //combo things
+            if(currentCombo > 1) {
+                for(k = 0; k < numberOfMsg; k++) {
+                    if(MSGs[k].alive == false) {
+                        MSGs[k] = new msg(true, "+"+currentCombo + " combo",100, gameHeight - 80,-1, "black");
+                        //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
+                        break;
+                    }
+                }
+                score += currentCombo;
+            }
+            comboEnded = true;
+            currentCombo = 0;
+
+            //stop player from falling
             pop.yDir = 0;
             pop.yPos = floorSize + pop.width;
             pop.jump = false;
         }
 
-        if(jumpingOverBlock) {
+        if(jumpingOverBlock && !firstTimeFalling) {
+            if(comboEnded == false)
+                currentCombo++;
+
+            //message for score
+            for(k = 0; k < numberOfMsg; k++) {
+                if(MSGs[k].alive == false) {
+                    MSGs[k] = new msg(true, "+1", 100, gameHeight - 50,-1, "black");
+                    //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
+                    break;
+                }
+            }
+            score++;
+
             jumpingOverBlock = false;
             for(k = 0; k < numberOfMsg; k++) {
                 if(MSGs[k].alive == false) {
@@ -471,9 +522,9 @@ function updateDogPos(modifier) {
                     if(Math.random() < 0.1)
                         randomMessage = "Insert Adjective!";
                     if(Math.random() < 0.1)
-                        randomMessage = "Jumping like Mason!";
+                        randomMessage = "Mason!";
                     if(Math.random() < 0.1)
-                        randomMessage = "Like an Olympian";
+                        randomMessage = "Olympian";
                     if(Math.random() < 0.1)
                         randomMessage = "PLZ";
                     if(Math.random() < 0.05)
@@ -482,15 +533,13 @@ function updateDogPos(modifier) {
                         randomMessage = "Your score must be 8 sideways!";
                     if(Math.random() < 0.05)
                         randomMessage = "Athletic!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Schwarzenegger thinks you rock!!1!";
                     if(Math.random() < 0.05)
                         randomMessage = "Mad Style.";
                     if(Math.random() < 0.05)
-                        randomMessage = "What flow?!";
-                    if(Math.random() < 0.05)
                         randomMessage = "I'm impressed.";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "POWER!!!  -Kanye";
                     if(Math.random() < 0.05)
                         randomMessage = "What an athlete.";
@@ -498,9 +547,9 @@ function updateDogPos(modifier) {
                         randomMessage = "Great jump!";
                     if(Math.random() < 0.1)
                         randomMessage = "Smooth Sailing!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "KAW! KAW! (You fly like a bird)";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.01)
                         randomMessage = "It's a bird? It's a plane? It's YOU!";
                     if(Math.random() < 0.1)
                         randomMessage = "FANTASTIC";
@@ -508,11 +557,20 @@ function updateDogPos(modifier) {
                         randomMessage = "INCREDIBLE";
                     if(Math.random() < 0.1)
                         randomMessage = "UNTOUCHABLE";
-                    MSGs[k] = new msg(true, randomMessage, pop.xPos + pop.width/2, pop.yPos - pop.width/2, "black");
+                    if(Math.random() < 0.1)
+                        randomMessage = "You rock!";
+                    MSGs[k] = new msg(true, randomMessage, pop.xPos + pop.width/2, pop.yPos - pop.width/2,1, "black");
+                    if(currentCombo > 1 && k != numberOfMsg - 1)
+                        MSGs[k + 1] = new msg(true, currentCombo + " combo!", pop.xPos + pop.width/2, pop.yPos - pop.width,1, "black");
+                    else if(currentCombo > 1 && k == numberOfMsg - 1)
+                        MSGs[0] = new msg(true, currentCombo + " combo!", pop.xPos + pop.width/2, pop.yPos - pop.width,1, "black");
                     //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                     break;
                 }
             }
+        }
+        else if(firstTimeFalling) {
+            firstTimeFalling = false;
         }
     }
 
@@ -539,6 +597,7 @@ function keyPressed(e) {
     }
     if (key == 38 || key == 32) {
         if (pop.jump == false) {
+            comboEnded = false;
             pop.space = true;
             pop.jump = true;
             pop.yDir = jumpSpeed;
@@ -569,7 +628,7 @@ function keyReleased(e) {
 //they can't move, but they can jump!!!
 window.addEventListener('touchstart', this.touchStart, false);
 
-function touchStart(e) {
+function touchStart() {
     if (pop.jump == false) {
         pop.space = true;
         pop.jump = true;
@@ -579,6 +638,6 @@ function touchStart(e) {
 
 window.addEventListener('touchend', this.touchEnd, false);
 
-function touchEnd(e) {
+function touchEnd() {
     pop.space = false;
 }
