@@ -33,6 +33,8 @@ var LEFT = 0;
 
 var jumpingOverBlock = false;
 
+var score = 0;
+
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
 var pop;
@@ -111,6 +113,12 @@ function init() {
 
     resetGame();
 
+    MSGs[0] = new msg(true, "Use arrow keys to control! Space to Jump!", gameWidth/2 - 100, floorSize + pop.width/2, "black");
+
+    setTimeout(function() {
+        MSGs[1] = new msg(true, "WATCH OUT!!!!", gameWidth - gameWidth/6, floorSize + pop.width/2, "black");
+    }, 2000);
+
     //start the game loop
     setInterval(function () { gameLoop() }, 0);
 }
@@ -137,6 +145,8 @@ function resetGame() {
     pop.xPos = originalWidth/2;
     pop.yPos = originalHeight - pop.width;
 
+    score = 0;
+
     jumpingOverBlock = false;
 
     //block variables
@@ -155,7 +165,7 @@ function resetGame() {
 
     MSGs = [];
     for(i = 0; i < numberOfMsg; i++) {
-        MSGs[i] = new msg(false, 0,0,"white");
+        MSGs[i] = new msg(false, "lol",0,0,"white");
     }
 }
 
@@ -185,6 +195,9 @@ function render() {
     ctx.fillRect(0, (gameHeight-floorSize), gameWidth, 4);
     ctx.fillRect(0, (gameHeight-floorSize) + 8, gameWidth, 2);
     ctx.fillRect(0, (gameHeight-floorSize) + 14, gameWidth, 1);
+
+    ctx.font="1.5em Oswald";
+    ctx.fillText("SCORE: "+score, 2, 30);
 }
 
 function drawBlocks() {
@@ -257,7 +270,6 @@ for(k = 0; k < numberOfMsg; k++) {
 */
 
 function checkCollisions() {
-    var isJumpingOverBlock = false;
     for(var i = 0; i < blocks.length; i++) {
         //x collide
         if((blocks[i].xPos >= pop.xPos && blocks[i].xPos <= pop.xPos + pop.width)
@@ -273,19 +285,8 @@ function checkCollisions() {
             }
             else {
                 jumpingOverBlock = true;
-                isJumpingOverBlock = true;
             }
         }
-    }
-    if(!isJumpingOverBlock && jumpingOverBlock) {
-        //jumping over block success?!
-        /*for(k = 0; k < numberOfMsg; k++) {
-            if(MSGs[k].alive == false) {
-                MSGs[k] = new msg(true, pop.xPos, pop.yPos, "black");
-                //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
-                break;
-            }
-        }*/
     }
 }
 
@@ -345,6 +346,7 @@ function updateBlocks(delta) {
                 }
             }
             blocks.splice(i,1);
+            score++;
         }
     }
 
@@ -443,6 +445,17 @@ function updateDogPos(modifier) {
             pop.yDir = 0;
             pop.yPos = floorSize + pop.width;
             pop.jump = false;
+        }
+
+        if(jumpingOverBlock) {
+            jumpingOverBlock = false;
+            for(k = 0; k < numberOfMsg; k++) {
+                if(MSGs[k].alive == false) {
+                    MSGs[k] = new msg(true, "Nice jump!", pop.xPos + pop.width/2, pop.yPos - pop.width/2, "black");
+                    //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
+                    break;
+                }
+            }
         }
     }
 

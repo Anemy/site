@@ -105,3 +105,16 @@ body {
     margin-top: 1%;
     font-weight: 400;
 }
+
+span:hover {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: #000020;
+}
+
+a:visited {
+	text-decoration: none;
+}
