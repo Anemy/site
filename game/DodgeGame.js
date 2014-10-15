@@ -384,7 +384,7 @@ function updateBlocks(delta) {
 
             //adjusting difficulty
             if(currentMaxSize < 400)
-                currentMaxSize += 1;
+                currentMaxSize += 2;
 
             if(blockSpeed > 1000)
                 blockSpeed += 0.5;
@@ -394,9 +394,9 @@ function updateBlocks(delta) {
                 blockSpeed += 4;
 
             if(spawnRate < 0.5)
-                spawnRate -= 0.001;
-            else if(spawnRate < 1)
                 spawnRate -= 0.005;
+            else if(spawnRate < 1)
+                spawnRate -= 0.02;
             else
                 spawnRate -= 0.05;
             //spawnChance += 0.01;
@@ -451,7 +451,64 @@ function updateDogPos(modifier) {
             jumpingOverBlock = false;
             for(k = 0; k < numberOfMsg; k++) {
                 if(MSGs[k].alive == false) {
-                    MSGs[k] = new msg(true, "Nice jump!", pop.xPos + pop.width/2, pop.yPos - pop.width/2, "black");
+                    var randomMessage = "Nice Jump!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Sweet!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Killing it!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Jumping SKILLZZZ";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Pro Moves!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Winning!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Do it again!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "These blocks are too small!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "EZ";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Insert Adjective!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Jumping like Mason!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Like an Olympian";
+                    if(Math.random() < 0.1)
+                        randomMessage = "PLZ";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Getting tired yet?";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Your score must be 8 sideways!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Athletic!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Schwarzenegger thinks you rock!!1!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Mad Style.";
+                    if(Math.random() < 0.05)
+                        randomMessage = "What flow?!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "I'm impressed.";
+                    if(Math.random() < 0.05)
+                        randomMessage = "POWER!!!  -Kanye";
+                    if(Math.random() < 0.05)
+                        randomMessage = "What an athlete.";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Great jump!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Smooth Sailing!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "KAW! KAW! (You fly like a bird)";
+                    if(Math.random() < 0.1)
+                        randomMessage = "It's a bird? It's a plane? It's YOU!";
+                    if(Math.random() < 0.1)
+                        randomMessage = "FANTASTIC";
+                    if(Math.random() < 0.1)
+                        randomMessage = "INCREDIBLE";
+                    if(Math.random() < 0.1)
+                        randomMessage = "UNTOUCHABLE";
+                    MSGs[k] = new msg(true, randomMessage, pop.xPos + pop.width/2, pop.yPos - pop.width/2, "black");
                     //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                     break;
                 }
