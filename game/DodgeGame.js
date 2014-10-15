@@ -452,7 +452,7 @@ function updateDogPos(modifier) {
                 if(currentCombo > 1) {
                     for(k = 0; k < numberOfMsg; k++) {
                         if(MSGs[k].alive == false) {
-                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,-1, "black");
+                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,0,-1, "black");
                             //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                             break;
                         }
@@ -598,10 +598,10 @@ function keyPressed(e) {
     if (key == 38 || key == 32) {
         if (pop.jump == false) {
             comboEnded = false;
-            pop.space = true;
             pop.jump = true;
             pop.yDir = jumpSpeed;
         }
+        pop.space = true;
     }
 }
 
