@@ -25,6 +25,8 @@ var part = function (living, xpos, ypos, xdir, ydir, color) {
 
 function drawParts(ctx) {
     //draw particles
+    ctx.lineWidth = "1";
+    ctx.strokeStyle = "rgb(0,0,0)";
     for(i = 0; i < numberOfParts; i++) {
         if(parts[i].alive == true) {
             ctx.globalAlpha = 0.6*(parts[i].life/100);
@@ -38,6 +40,10 @@ function drawParts(ctx) {
             ctx.translate(parts[i].x*scale, gameHeight - parts[i].y);
             ctx.rotate(parts[i].rotation*(Math.PI/180));
             ctx.fillRect((-parts[i].width/2) ,(-parts[i].height/2),parts[i].width,parts[i].height);
+
+            ctx.beginPath();
+            ctx.rect((-parts[i].width/2) ,(-parts[i].height/2),parts[i].width,parts[i].height);
+            ctx.stroke();
 
             ctx.rotate(-parts[i].rotation*(Math.PI/180));
             ctx.translate(-parts[i].x*scale, -gameHeight + parts[i].y);

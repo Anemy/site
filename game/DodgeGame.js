@@ -266,15 +266,6 @@ function update(delta) {
     updateParts(delta);
 }
 
-/* Adding a new message:
-for(k = 0; k < numberOfMsg; k++) {
-    if(harvMSGs[k].alive == false) {
-        harvMSGs[k] = new harvestMSG(true, drops[i].imageID, hero.x, hero.y - hero.height/2);
-        break;
-    }
-}
-*/
-
 function checkCollisions() {
     for(var i = 0; i < blocks.length; i++) {
         //x collide
@@ -452,7 +443,7 @@ function updateDogPos(modifier) {
                 if(currentCombo > 1) {
                     for(k = 0; k < numberOfMsg; k++) {
                         if(MSGs[k].alive == false) {
-                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,0,-1, "black");
+                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,-1, "black");
                             //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                             break;
                         }
