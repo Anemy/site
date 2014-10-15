@@ -31,6 +31,8 @@ var dogL;
 var RIGHT = 1;
 var LEFT = 0;
 
+var jumpingOverBlock = false;
+
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
 var pop;
@@ -135,6 +137,8 @@ function resetGame() {
     pop.xPos = originalWidth/2;
     pop.yPos = originalHeight - pop.width;
 
+    jumpingOverBlock = false;
+
     //block variables
     blockSpeed = 8 * fps;
     currentMaxSize = 100;
@@ -171,10 +175,10 @@ function gameLoop() {
 function render() {
     ctx.clearRect(0, 0, gameWidth, gameHeight);
 
+    drawMSGs(ctx);
     drawPop();
     drawBlocks();
     drawParts(ctx);
-    drawMSGs(ctx);
     //console.log("DogX: " + pop.xPos + "  -  " + pop.yPos);
 
     ctx.fillStyle = "rgb(0,0,0)";
@@ -253,6 +257,7 @@ for(k = 0; k < numberOfMsg; k++) {
 */
 
 function checkCollisions() {
+    var isJumpingOverBlock = false;
     for(var i = 0; i < blocks.length; i++) {
         //x collide
         if((blocks[i].xPos >= pop.xPos && blocks[i].xPos <= pop.xPos + pop.width)
@@ -263,9 +268,24 @@ function checkCollisions() {
             if(pop.yPos - pop.width - floorSize < blocks[i].height) {
                 //console.log("It's a hit!");
                 //blocks.splice(i,1);
+                jumpingOverBlock = false;
                 killPop();
             }
+            else {
+                jumpingOverBlock = true;
+                isJumpingOverBlock = true;
+            }
         }
+    }
+    if(!isJumpingOverBlock && jumpingOverBlock) {
+        //jumping over block success?!
+        /*for(k = 0; k < numberOfMsg; k++) {
+            if(MSGs[k].alive == false) {
+                MSGs[k] = new msg(true, pop.xPos, pop.yPos, "black");
+                //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
+                break;
+            }
+        }*/
     }
 }
 
