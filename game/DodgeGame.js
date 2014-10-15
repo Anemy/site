@@ -564,3 +564,21 @@ function keyReleased(e) {
         //space
     }
 }
+
+//touch screen
+//they can't move, but they can jump!!!
+window.addEventListener('touchstart', this.touchStart, false);
+
+function touchStart(e) {
+    if (pop.jump == false) {
+        pop.space = true;
+        pop.jump = true;
+        pop.yDir = jumpSpeed;
+    }
+}
+
+window.addEventListener('touchend', this.touchEnd, false);
+
+function touchEnd(e) {
+    pop.space = false;
+}
