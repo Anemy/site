@@ -2,7 +2,7 @@ var parts = [];
 var maxPartSpeed = 80.0;
 var minPartSpeed = 20.0;
 var partFallSpeed = 30;
-var numberOfParts = 150;
+var numberOfParts = 250;
 
 var part = function (living, xpos, ypos, xdir, ydir, color) {
     this.width = 8.0;

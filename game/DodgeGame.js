@@ -80,6 +80,9 @@ var block = function() {
     this.xPos = 0;
     this.yPos = 0;
 
+    //direction going, 1 is Left, -1 is Right
+    this.direction = 1;
+
     //square dimensions
     this.height = 80;
     this.width = 36;
@@ -125,7 +128,8 @@ function init() {
     MSGs[0] = new msg(true, "Use arrow keys to control! Space to Jump!", gameWidth/2 - 100, floorSize + pop.width/2,1, "black");
 
     setTimeout(function() {
-        MSGs[1] = new msg(true, "WATCH OUT!!!!", gameWidth - gameWidth/6, floorSize + pop.width/2,1, "black");
+        MSGs[1] = new msg(true, "WATCH OUT!!!!", gameWidth - gameWidth/5, floorSize + pop.width/2,1, "black");
+        MSGs[2] = new msg(true, "WATCH OUT!!!!", gameWidth/10, floorSize + pop.width/2,1, "black");
     }, 2000);
 
     //start the game loop
@@ -208,8 +212,10 @@ function render() {
 
 function drawBlocks() {
     for(var i = 0; i < blocks.length; i++) {
+        ctx.globalAlpha = 0.8;
         ctx.fillStyle = "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + ", " + blocks[i].colors[2] + ")";
         ctx.fillRect(blocks[i].xPos * scale, gameHeight - blocks[i].height - floorSize, blocks[i].width, blocks[i].height);
+        ctx.globalAlpha = 1;
         //draw inner block design
         ctx.beginPath();
         ctx.strokeStyle = "black";
@@ -326,7 +332,7 @@ function killPop() {
                         if(numberOfPartsToAdd == 0)
                             break;
                         parts[k] = new part(true,
-                            blocks[i].xPos + Math.random()*getNegative(blocks[i].width),floorSize + blocks[i].yPos - Math.random()*getNegative(blocks[i].height),
+                            blocks[i].width/2 + blocks[i].xPos + Math.random()*getNegative(blocks[i].width/2),floorSize + blocks[i].height/2 + blocks[i].yPos + Math.random()*getNegative(blocks[i].height/2),
                             getNegative(Math.random()*maxPartSpeed),
                             -(Math.random()*maxPartSpeed + minPartSpeed),
                             "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
@@ -351,8 +357,8 @@ function updateBlocks(delta) {
     for(var i = 0; i < blocks.length; i++) {
         //console.log("Update with x Pos: " + blocks[i].xPos);
 
-        blocks[i].xPos -= blockSpeed*delta;
-        if(blocks[i].xPos < -blocks[i].width - 5) {
+        blocks[i].xPos -= blocks[i].direction*blockSpeed*delta;
+        if(blocks[i].direction == 1 && blocks[i].xPos < -blocks[i].width - 5) {
             //particles for block death
             var numberOfPartsToAdd = 25;
             for(k = 0; k < numberOfParts; k++) {
@@ -363,6 +369,27 @@ function updateBlocks(delta) {
                     parts[k] = new part(true,
                         blocks[i].xPos + blocks[i].width,floorSize + blocks[i].yPos - Math.random()*getNegative(blocks[i].height),
                         Math.random()*maxPartSpeed,
+                        -(Math.random()*maxPartSpeed + minPartSpeed),
+                        "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
+                    parts[k].rotation = Math.random()*359.0;
+                    parts[k].rotationVelo = getNegative(Math.random()*359.0);
+
+                    //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
+                }
+            }
+            blocks.splice(i,1);
+        }
+        else if(blocks[i].direction == -1 && blocks[i].xPos > originalWidth + 5) {
+            //particles for block death
+            var numberOfPartsToAdd = 25;
+            for(k = 0; k < numberOfParts; k++) {
+                if(parts[k].alive == false) {
+                    numberOfPartsToAdd--;
+                    if(numberOfPartsToAdd == 0)
+                        break;
+                    parts[k] = new part(true,
+                        blocks[i].xPos + blocks[i].width,floorSize + blocks[i].yPos - Math.random()*getNegative(blocks[i].height),
+                        -Math.random()*maxPartSpeed,
                         -(Math.random()*maxPartSpeed + minPartSpeed),
                         "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
                     parts[k].rotation = Math.random()*359.0;
@@ -386,7 +413,13 @@ function updateBlocks(delta) {
 
             //Add a new block!!!
             var newBlock = new block();
-            newBlock.xPos = originalWidth + 5 + newBlock.width;
+            if(Math.random()*10 > 5) {
+                newBlock.xPos = -newBlock.width - 5;
+                newBlock.direction = -1;
+            }
+            else {
+                newBlock.xPos = originalWidth + 5 + newBlock.width;
+            }
             newBlock.height = currentMaxSize * (0.3 + (0.7*Math.random()));
 
             //choose the colors
