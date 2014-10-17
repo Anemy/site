@@ -34,6 +34,7 @@ var LEFT = 0;
 var jumpingOverBlock = false;
 
 var score = 0;
+var highScore = 0;
 var currentCombo = 0;
 var comboEnded = true;
 var firstTimeFalling = true;
@@ -206,8 +207,9 @@ function render() {
     ctx.fillRect(0, (gameHeight-floorSize) + 8, gameWidth, 2);
     ctx.fillRect(0, (gameHeight-floorSize) + 14, gameWidth, 1);
 
-    ctx.font="1.5em Oswald";
-    ctx.fillText("SCORE: "+score, 2, 30);
+    ctx.font="30px Oswald";
+    ctx.fillText("HIGHSCORE: "+highScore, 2, 30);
+    ctx.fillText("SCORE: "+score, 2, 60);
 }
 
 function drawBlocks() {
@@ -505,12 +507,14 @@ function updateDogPos(modifier) {
                 if(currentCombo > 1) {
                     for(k = 0; k < numberOfMsg; k++) {
                         if(MSGs[k].alive == false) {
-                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 100, gameHeight - 80,-1, "black");
+                            MSGs[k] = new msg(true, "+"+currentCombo + " combo", 120, gameHeight - 120,-1, "black");
                             //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                             break;
                         }
                     }
                     score += currentCombo;
+                    if(highScore < score)
+                        highScore = score;
                 }
                 comboEnded = true;
                 currentCombo = 0;
@@ -522,12 +526,14 @@ function updateDogPos(modifier) {
             if(currentCombo > 1) {
                 for(k = 0; k < numberOfMsg; k++) {
                     if(MSGs[k].alive == false) {
-                        MSGs[k] = new msg(true, "+"+currentCombo + " combo",100, gameHeight - 80,-1, "black");
+                        MSGs[k] = new msg(true, "+"+currentCombo + " combo",120, gameHeight - 120,-1, "black");
                         //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                         break;
                     }
                 }
                 score += currentCombo;
+                if(score > highScore)
+                    highScore = score;
             }
             comboEnded = true;
             currentCombo = 0;
@@ -545,7 +551,7 @@ function updateDogPos(modifier) {
             //message for score
             for(k = 0; k < numberOfMsg; k++) {
                 if(MSGs[k].alive == false) {
-                    MSGs[k] = new msg(true, "+1", 100, gameHeight - 50,-1, "black");
+                    MSGs[k] = new msg(true, "+1", 120, gameHeight - 90,-1, "black");
                     //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                     break;
                 }
@@ -621,6 +627,8 @@ function updateDogPos(modifier) {
                     break;
                 }
             }
+            if(highScore < score)
+                highScore = score;
         }
         else if(firstTimeFalling) {
             firstTimeFalling = false;
