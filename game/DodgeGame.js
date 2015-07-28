@@ -35,6 +35,7 @@ var jumpingOverBlock = false;
 
 var score = 0;
 var highScore = 0;
+var savedHighScore = 0;
 var currentCombo = 0;
 var comboEnded = true;
 var firstTimeFalling = true;
@@ -111,6 +112,13 @@ function init() {
 
     scale = gameWidth/originalWidth;
     yScale = gameHeight/originalHeight;
+
+    // local storage highscore
+    if (localStorage.getItem("rhysHighScorPLZDONTCHEATOMG")) {
+        // there was a highscore! cool...
+        highScore = localStorage.getItem("rhysHighScorPLZDONTCHEATOMG");
+        savedHighScore = localStorage.getItem("rhysHighScorPLZDONTCHEATOMG");
+    }
 
     console.log("Canvas created, dimensions: " + gameWidth + "x" + gameHeight + " scaling: " + scale);
 
@@ -300,6 +308,10 @@ function checkCollisions() {
 //kill the dog and call the game reset
 function killPop() {
     keepUpdating = false;
+
+    if(savedHighScore < highScore) {
+        localStorage.setItem("rhysHighScorPLZDONTCHEATOMG", highScore);
+    }
 
     setTimeout( function() {
         //particles for doggy death
@@ -513,8 +525,10 @@ function updateDogPos(modifier) {
                         }
                     }
                     score += currentCombo;
-                    if(highScore < score)
+                    if(highScore < score) {
                         highScore = score;
+
+                    }
                 }
                 comboEnded = true;
                 currentCombo = 0;
@@ -532,8 +546,9 @@ function updateDogPos(modifier) {
                     }
                 }
                 score += currentCombo;
-                if(score > highScore)
+                if(score > highScore) {
                     highScore = score;
+                }
             }
             comboEnded = true;
             currentCombo = 0;
@@ -627,8 +642,9 @@ function updateDogPos(modifier) {
                     break;
                 }
             }
-            if(highScore < score)
+            if(highScore < score) {
                 highScore = score;
+            }
         }
         else if(firstTimeFalling) {
             firstTimeFalling = false;
