@@ -582,6 +582,8 @@ function updateDogPos(modifier) {
                     if(Math.random() < 0.1)
                         randomMessage = "Killing it!";
                     if(Math.random() < 0.05)
+                        randomMessage = "puppums!";
+                    if(Math.random() < 0.05)
                         randomMessage = "Jumping SKILLZZZ";
                     if(Math.random() < 0.1)
                         randomMessage = "Pro Moves!";
@@ -589,26 +591,30 @@ function updateDogPos(modifier) {
                         randomMessage = "Winning!";
                     if(Math.random() < 0.1)
                         randomMessage = "Do it again!";
+                    if(Math.random() < 0.05)
+                        randomMessage = "sick.";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Never seen that b4";
                     if(Math.random() < 0.1)
                         randomMessage = "These blocks are too small!";
                     if(Math.random() < 0.1)
                         randomMessage = "EZ";
                     if(Math.random() < 0.1)
-                        randomMessage = "Insert Adjective!";
+                        randomMessage = "ayyyyy";
                     if(Math.random() < 0.1)
-                        randomMessage = "Mason!";
+                        randomMessage = "Insert Adjective!";
                     if(Math.random() < 0.1)
                         randomMessage = "Olympian";
                     if(Math.random() < 0.1)
                         randomMessage = "PLZ";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Not even breaking a sweat";
                     if(Math.random() < 0.05)
                         randomMessage = "Getting tired yet?";
                     if(Math.random() < 0.05)
                         randomMessage = "Your score must be 8 sideways!";
                     if(Math.random() < 0.05)
                         randomMessage = "Athletic!";
-                    if(Math.random() < 0.01)
-                        randomMessage = "Schwarzenegger thinks you rock!!1!";
                     if(Math.random() < 0.05)
                         randomMessage = "Mad Style.";
                     if(Math.random() < 0.05)
@@ -630,7 +636,27 @@ function updateDogPos(modifier) {
                     if(Math.random() < 0.1)
                         randomMessage = "INCREDIBLE";
                     if(Math.random() < 0.1)
+                        randomMessage = "BREATHTAKING";
+                    if(Math.random() < 0.1)
+                        randomMessage = "OH BABY";
+                    if(Math.random() < 0.05)
+                        randomMessage = "stirring";
+                    if(Math.random() < 0.05)
+                        randomMessage = "Far out";
+                    if(Math.random() < 0.1)
+                        randomMessage = "Nice Skills!";
+                    if(Math.random() < 0.03)
+                        randomMessage = "Most dope";
+                    if(Math.random() < 0.1)
+                        randomMessage = "NOT BAD.";
+                    if(Math.random() < 0.1)
+                        randomMessage = "do it againnn";
+                    if(Math.random() < 0.1)
+                        randomMessage = "ON FIRE!!1!";
+                    if(Math.random() < 0.1)
                         randomMessage = "UNTOUCHABLE";
+                    if(Math.random() < 0.01)
+                        randomMessage = "Slick moves";
                     if(Math.random() < 0.1)
                         randomMessage = "You rock!";
                     MSGs[k] = new msg(true, randomMessage, pop.xPos + pop.width/2, pop.yPos - pop.width/2,1, "black");

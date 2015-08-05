@@ -59,18 +59,52 @@ body {
     text-align: center;
 }
 
+.backToSite {
+    position: fixed;
+    top: 0.25em;
+    left: 0.25em;
+
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+
+    z-index: 2;
+}
+.backToSite:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
 .blogMiddle {
     position: absolute;
-    left: 30%;
+    left: 28%;
     top: 4em;
-    width: 70%;
+    width: 60%;
 
     text-align: middle;
+
+    margin-bottom: 2em;
 }
 
 .blogFixed {
     position: fixed;
-    left: 5%;
+    left: 4%;
     width: 20%;
 
     /*color: #2ecc71;*/
@@ -115,6 +149,9 @@ body {
     cursor: pointer;
 
     color: #2980b9;
+}
+.pastArticle:active {
+    color: #169095;
 }
 
 .backgroundTeaser {
