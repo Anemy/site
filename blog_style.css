@@ -55,33 +55,133 @@ table {
 
 body {
     background-size: 100%;
-    color: #ecf0f1;
+    color: #110021;
     text-align: center;
 }
 
 .blogMiddle {
     position: absolute;
-    left: 20%;
+    left: 30%;
     top: 4em;
-    width: 60%;
+    width: 70%;
+
+    text-align: middle;
+}
+
+.blogFixed {
+    position: fixed;
+    left: 5%;
+    width: 20%;
+
+    /*color: #2ecc71;*/
+    color: #110021;
 
     text-align: left;
 }
 
-.blogTitle {
-    font-family: Calibri, sans-serif;
-    /*font-family: 'Questrial', sans-serif;*/
+.mePic {
+    width: 60%;
+    border-radius: 50%;
 
+    margin-top: 4em;
     margin-left: 10%;
+}
 
-    color: #506A85;
+.blogTitle {
+    /*font-family: Calibri, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+
+    margin-top: 0.5em;
+
     font-size: 1.5em;
 }
 
 .blogSticky {
-    font-family: Calibri, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     /*font-family: 'Questrial', sans-serif;*/
 
     margin-top: 1em;
-    color: #506A85;
 }
+.pastArticle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    margin-top: 0.5em;
+    margin-left: 0.2em;
+}
+.pastArticle:hover {
+    cursor: pointer;
+
+    color: #2980b9;
+}
+
+.backgroundTeaser {
+    width: 23.5%;
+    margin: 0.5%;
+
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+.downloadLink {
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.downloadLink:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+
+
+
+/*** Article Properties ***/
+
+.article {
+
+}
+
+.articleTitle {
+    margin-top: 5em;
+    margin-left: 1em;
+
+    text-align: left;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+
+    font-size: 1.4em;
+}
+
+.articleText br {
+    display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 0.5em; /* change this to whatever height you want it */
+}
+.articleText {
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    text-align: left;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/*** END article properties ***/
+
