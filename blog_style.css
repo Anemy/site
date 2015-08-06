@@ -220,5 +220,32 @@ body {
     font-weight: 300;
 }
 
+.articleLink{
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.articleLink:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.articleBreaker {
+    margin: 1.5em;
+}
+
 /*** END article properties ***/
 
