@@ -20,5 +20,13 @@ $(document).ready(function() {
     }, 'slow');
 	});
 
+	// handle clicking on article images (opens raw source in new tab)
+	$('.articleImage').click(function (event) {
+		var articleSRC = $(event.target).attr('src');
+
+		var redirectWindow = window.open(articleSRC, '_blank');
+		redirectWindow.location;
+	});
+
 	console.log('JS loaded.');
 });

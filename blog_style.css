@@ -94,7 +94,7 @@ body {
 .blogMiddle {
     position: absolute;
     left: 28%;
-    top: 4em;
+    top: 1em;
     width: 60%;
 
     text-align: middle;
@@ -245,6 +245,21 @@ body {
 
 .articleBreaker {
     margin: 1.5em;
+}
+
+.articleImage {
+    width: 80%;
+    margin-left: 10%;
+
+    border: 1px solid #090015;
+    margin-top: 1em;
+
+    -webkit-box-shadow: 0 4px 4px -4px black;
+     -moz-box-shadow: 0 4px 4px -4px black;
+          box-shadow: 0 4px 4px -4px black;
+}
+.articleImage:hover {
+    cursor: pointer;
 }
 
 /*** END article properties ***/
