@@ -3,7 +3,12 @@ This just holds the Javascript for the blog page
 @author Rhys
 */
 
-console.log('JS loaded.');
+
+// Opens passed URL in a new tab
+var openURL = function (URL) {
+	var redirectWindow = window.open(URL, '_blank');
+	redirectWindow.location;
+};
 
 $(document).ready(function() {
 
@@ -14,4 +19,14 @@ $(document).ready(function() {
         	scrollTop: $('#' + articleID).offset().top - 20
     }, 'slow');
 	});
+
+	// handle clicking on article images (opens raw source in new tab)
+	$('.articleImage').click(function (event) {
+		var articleSRC = $(event.target).attr('src');
+
+		var redirectWindow = window.open(articleSRC, '_blank');
+		redirectWindow.location;
+	});
+
+	console.log('JS loaded.');
 });

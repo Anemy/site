@@ -94,7 +94,7 @@ body {
 .blogMiddle {
     position: absolute;
     left: 28%;
-    top: 4em;
+    top: 1em;
     width: 60%;
 
     text-align: middle;
@@ -111,6 +111,12 @@ body {
     color: #110021;
 
     text-align: left;
+}
+
+.viewCounter {
+    position: fixed;
+    left: 1em;
+    bottom: 1em;
 }
 
 .mePic {
@@ -218,6 +224,48 @@ body {
 
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+}
+
+.articleLink{
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.articleLink:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.articleBreaker {
+    margin: 1.5em;
+}
+
+.articleImage {
+    width: 80%;
+    margin-left: 10%;
+
+    border: 1px solid #090015;
+    margin-top: 1em;
+
+    -webkit-box-shadow: 0 4px 4px -4px black;
+     -moz-box-shadow: 0 4px 4px -4px black;
+          box-shadow: 0 4px 4px -4px black;
+}
+.articleImage:hover {
+    cursor: pointer;
 }
 
 /*** END article properties ***/

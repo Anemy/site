@@ -39,6 +39,8 @@ var savedHighScore = 0;
 var currentCombo = 0;
 var comboEnded = true;
 var firstTimeFalling = true;
+var doItAgain = false;
+var realLife = false;
 
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
@@ -577,88 +579,116 @@ function updateDogPos(modifier) {
             for(k = 0; k < numberOfMsg; k++) {
                 if(MSGs[k].alive == false) {
                     var randomMessage = "Nice Jump!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Sweet!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Killing it!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "puppums!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Jumping SKILLZZZ";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Pro Moves!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Winning!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Do it again!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "sick.";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Never seen that b4";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "These blocks are too small!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "EZ";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.01)
+                        randomMessage = "pffff";
+                    if(Math.random() < 0.03)
                         randomMessage = "ayyyyy";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Insert Adjective!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "Olympian";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "PLZ";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Not even breaking a sweat";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Getting tired yet?";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Your score must be 8 sideways!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Athletic!";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "Mad Style.";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "I'm impressed.";
                     if(Math.random() < 0.01)
+                        randomMessage = "what?";
+                    if(Math.random() < 0.01)
+                        randomMessage = "eh?";
+                    if(Math.random() < 0.01)
+                        randomMessage = "okay...";
+                    if(Math.random() < 0.003)
                         randomMessage = "POWER!!!  -Kanye";
-                    if(Math.random() < 0.05)
+                    if(Math.random() < 0.01)
                         randomMessage = "What an athlete.";
-                    if(Math.random() < 0.1)
-                        randomMessage = "Great jump!";
-                    if(Math.random() < 0.1)
-                        randomMessage = "Smooth Sailing!";
-                    if(Math.random() < 0.01)
-                        randomMessage = "KAW! KAW! (You fly like a bird)";
-                    if(Math.random() < 0.01)
-                        randomMessage = "It's a bird? It's a plane? It's YOU!";
-                    if(Math.random() < 0.1)
-                        randomMessage = "FANTASTIC";
-                    if(Math.random() < 0.1)
-                        randomMessage = "INCREDIBLE";
-                    if(Math.random() < 0.1)
-                        randomMessage = "BREATHTAKING";
-                    if(Math.random() < 0.1)
-                        randomMessage = "OH BABY";
-                    if(Math.random() < 0.05)
-                        randomMessage = "stirring";
-                    if(Math.random() < 0.05)
-                        randomMessage = "Far out";
-                    if(Math.random() < 0.1)
-                        randomMessage = "Nice Skills!";
                     if(Math.random() < 0.03)
+                        randomMessage = "Great jump!";
+                    if(Math.random() < 0.03)
+                        randomMessage = "Smooth Sailing!";
+                    if(Math.random() < 0.005)
+                        randomMessage = "KAW! KAW! (You fly like a bird)";
+                    if(Math.random() < 0.005)
+                        randomMessage = "It's a bird? It's a plane? It's YOU!";
+                    if(Math.random() < 0.03)
+                        randomMessage = "FANTASTIC";
+                    if(Math.random() < 0.03)
+                        randomMessage = "INCREDIBLE";
+                    if(Math.random() < 0.03)
+                        randomMessage = "BREATHTAKING";
+                    if(Math.random() < 0.03)
+                        randomMessage = "UNBELIEVABLE";
+                    if(Math.random() < 0.03)
+                        randomMessage = "OH BABY";
+                    if(Math.random() < 0.01)
+                        randomMessage = "Is this the real life?";
+                    if(Math.random() < 0.01)
+                        randomMessage = "Stirring";
+                    if(Math.random() < 0.01)
+                        randomMessage = "YOUNG $$$$";
+                    if(Math.random() < 0.01)
+                        randomMessage = "Far out.";
+                    if(Math.random() < 0.03)
+                        randomMessage = "Nice Skills!";
+                    if(Math.random() < 0.005)
                         randomMessage = "Most dope";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "NOT BAD.";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "do it againnn";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.01)
+                        randomMessage = "1-800 FLY JUMPS";
+                    if(Math.random() < 0.03)
                         randomMessage = "ON FIRE!!1!";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "UNTOUCHABLE";
                     if(Math.random() < 0.01)
                         randomMessage = "Slick moves";
-                    if(Math.random() < 0.1)
+                    if(Math.random() < 0.03)
                         randomMessage = "You rock!";
+                    if(doItAgain) {
+                        doItAgain = false;
+                        randomMessage = "did it againnn";
+                    }
+                    if(realLife) {
+                        realLife = false;
+                        randomMessage = "Is this just fantasy?";
+                    }
+                    if(randomMessage == "Is this the real life?")
+                        realLife = true;
+                    if (randomMessage == "do it againnn")
+                        doItAgain = true;
                     MSGs[k] = new msg(true, randomMessage, pop.xPos + pop.width/2, pop.yPos - pop.width/2,1, "black");
                     if(currentCombo > 1 && k != numberOfMsg - 1)
                         MSGs[k + 1] = new msg(true, currentCombo + " combo!", pop.xPos + pop.width/2, pop.yPos - pop.width,1, "black");
