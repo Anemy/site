@@ -1,16 +1,20 @@
 <html>
     <head>
         <!-- Styling -->
-        <link rel="stylesheet" type="text/css" href="blog_style.css">
+        <link rel="stylesheet" type="text/css" href="blog/blog_style.css">
 
         <!-- HI THANKS FOR LOOKING AT MY CODE! IT'S ALSO ON GITHUB: https://github.com/Anemy/Personal-Site -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="blog.js"></script>
+        <script src="blog/blog.js"></script>
 
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,900' rel='stylesheet' type='text/css'>
+
+        <!-- Video formatter (plyr.js) -->
+        <link rel="stylesheet" href="https://cdn.plyr.io/1.3.5/plyr.css">
+        <script src="https://cdn.plyr.io/1.3.5/plyr.js"></script>
     </head>
     <body>
         <div class="background"/>
@@ -29,55 +33,97 @@
         <div class="blogFixed">
             <img class="mePic" src="me.jpg">
             <p class="blogTitle">Rhys Howell</p>
-            <p class="blogSticky">This is my personal blog, written for myself.</p>
-            <p class="blogSticky" style="text-decoration: underline;">Past Articles</p>
+            <p class="blogSticky">This is my personal blog/journal.</p>
+            <p class="blogSticky" style="text-decoration: underline;">Past Articles (Clickable)</p>
 
-            <p class="pastArticle" id="1videoGames">
-                - Yosemite
+            <p class="pastArticle" id="1korea">
+                - Korea - Fall 2015
             </p>
+            <!-- <p class="pastArticle" id="1videoGames">
+                - Yosemite
+            </p> -->
             <p class="pastArticle" id="1videoGames">
-                - Video Games
+                - Video Games - Ongoing
             </p>
             <p class="pastArticle" id="1backgrounds">
-                - Backgrounds
+                - Backgrounds - July 2015
             </p>
+
+            <a href="https://github.com/Anemy/Personal-Site">
+                <img class="githubIcon" src="blog/github.svg">
+            </a>
 
         </div>
 
         <div class="blogMiddle">
 
-            <div class="article" id="videoGames">
+            <div class="article" id="korea">
+                <div class="articleTitle">
+                    Korea - Fall 2015 - Coming Soon
+                </div>
+                <div class="articleText">
+                    I'm spending the fall semester of 2015 studying abroad at Yonsei University in Seoul, South Korea.
+                    <br>
+                    Here are pictures and videos and a bit of text documenting my time.  (Most recent at the top)
+                    <br>
+                    <div class="articleBreaker"></div>
+
+
+                    <div class="articleMiddleText">
+                        In one of the universities with Jacob & Rebecca
+                    </div>
+                    <video class="articleVideo" controls muted>
+                        <source src="blog/korea_media/2v.m4v" type="video/mp4"></source>
+                    </video>
+                    <div class="articleBreaker"></div>
+
+                    <!-- <img class="articleImage" src="blog/korea_media/1.jpg"/> -->
+                    <div class="articleMiddleText">
+                        A view of Seoul from Namsan Mountain + Tower
+                    </div>
+                    <br>
+                    <img class="articleImage" src="blog/korea_media/3.jpg"/>
+                    <div class="articleBreaker"></div>
+
+                    <video class="articleVideo" controls>
+                        <source src="blog/korea_media/1v.m4v" type="video/mp4"></source>
+                    </video>
+                    <br>
+
+                    <img class="articleImage" src="blog/korea_media/2.jpg"/>
+                    <div class="articleBreaker"></div>
+
+
+                </div>
+            </div>
+
+            <!-- <div class="article" id="videoGames">
                 <div class="articleTitle">
                     Yosemite - Coming Soon
                 </div>
                 <div class="articleText">
-                    <img class="articleImage" src="Background_Teasers/photo-brendan-lynch-n-210.jpeg"/>
-                    <!-- 
+                    <img class="articleImage" src="blog/Background_Teasers/photo-brendan-lynch-n-210.jpeg"/>
+                    
                     Notes:
                     B&B
                     The Smell
                     Touloumne Meadows
                     Climbing
-                     -->
+                    
                 </div>
-            </div>
+            </div> -->
 
             <div class="article" id="videoGames">
                 <div class="articleTitle">
-                    Video Games - A Timeline
+                    Video Games - A Timeline - Ongoing
                 </div>
                 <div class="articleText">
                     Timeline of video games (Coming soon)
                     <br>
                     <div class="articleBreaker"></div>
                     
-                    <a class="articleLink" target="_blank" href="https://www.youtube.com/watch?v=5JaaiXBgvaA&hd=1">
-                        Timelapse of me programming the game Pong
-                    </a>
-                    <div class="articleBreaker"></div>
-
-                    <a class="articleLink" target="_blank" href="https://www.youtube.com/watch?v=eJLU1SP7gD4">
-                        A video of a game I created
+                    <a class="articleLink" target="_blank" href="http://stick.gg">
+                        Stick <span style="color: #3498db;">G</span><span style="color: #e74c3c;">G</span>
                     </a>
                     <div class="articleBreaker"></div>
 
@@ -86,9 +132,22 @@
                     </a>
                     <div class="articleBreaker"></div>
 
-                    <a class="articleLink" target="_blank" href="http://stick.gg">
-                        Stick <span style="color: #3498db;">G</span><span style="color: #e74c3c;">G</span>
+                    <a class="articleLink" target="_blank" href="https://www.youtube.com/watch?v=eJLU1SP7gD4">
+                        A video of a game I created
                     </a>
+                    <div class="articleBreaker"></div>
+
+                    <a class="articleLink" target="_blank" href="https://www.youtube.com/watch?v=5JaaiXBgvaA&hd=1">
+                        Timelapse of me programming the game Pong
+                    </a>
+                    <div class="articleBreaker"></div>
+
+                    
+
+                    
+                    
+
+                    
                     
                     <!-- 
                     Notes:
@@ -115,12 +174,12 @@
                     <br>
                     Here are a few teasers: (Download button below)
                     <br>
-                    <img class="backgroundTeaser" src="Background_Teasers/animals-birds-eating-4362.jpeg"/>
-                    <img class="backgroundTeaser" src="Background_Teasers/aOcWqRTfQ12uwr3wWevA_14401305508_804b300054_o.jpg"/>
-                    <img class="backgroundTeaser" src="Background_Teasers/fallen-tree-5224.jpg"/>
-                    <img class="backgroundTeaser" src="Background_Teasers/photo-brendan-lynch-n-210.jpeg"/>
+                    <img class="backgroundTeaser" src="blog/Background_Teasers/animals-birds-eating-4362.jpeg"/>
+                    <img class="backgroundTeaser" src="blog/Background_Teasers/aOcWqRTfQ12uwr3wWevA_14401305508_804b300054_o.jpg"/>
+                    <img class="backgroundTeaser" src="blog/Background_Teasers/fallen-tree-5224.jpg"/>
+                    <img class="backgroundTeaser" src="blog/Background_Teasers/photo-brendan-lynch-n-210.jpeg"/>
                 </div>
-                <a class="downloadLink" href="Backgrounds.zip" target="_blank">
+                <a class="downloadLink" href="blog/Backgrounds.zip" target="_blank">
                     Download
                 </a>
             </div>

@@ -1,0 +1,307 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* MY THINGS */
+
+#background {
+    position: fixed;
+    left: 0;
+    top: 0;
+   
+    background-color: #FAFAFA;
+}
+
+body {
+    background-size: 100%;
+    color: #110021;
+    text-align: center;
+}
+
+.backToSite {
+    position: fixed;
+    top: 0.25em;
+    left: 0.25em;
+
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+
+    z-index: 2;
+}
+.backToSite:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.blogMiddle {
+    position: absolute;
+    left: 28%;
+    top: 1em;
+    width: 60%;
+
+    text-align: middle;
+
+    margin-bottom: 2em;
+}
+
+.blogFixed {
+    position: fixed;
+    left: 4%;
+    width: 20%;
+
+    /*color: #2ecc71;*/
+    color: #110021;
+
+    text-align: left;
+}
+
+.viewCounter {
+    position: fixed;
+    left: 1em;
+    bottom: 1em;
+}
+
+.mePic {
+    width: 60%;
+    border-radius: 50%;
+
+    margin-top: 4em;
+    margin-left: 10%;
+}
+
+.githubIcon {
+    position: fixed;
+    bottom: 2em;
+    left: 1em;
+    width: 1.7em;
+
+    opacity: 0.34;
+    /*filter: brightness(50%);
+    -webkit-filter: brightness(50%);
+    -moz-filter: brightness(50%);
+    -o-filter: brightness(50%);
+    -ms-filter: brightness(50%);*/
+}
+
+.githubIcon:hover {
+    opacity: 1;
+}
+
+.blogTitle {
+    /*font-family: Calibri, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+
+    margin-top: 0.5em;
+
+    font-size: 1.5em;
+}
+
+.blogSticky {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    /*font-family: 'Questrial', sans-serif;*/
+
+    margin-top: 1em;
+}
+.pastArticle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    margin-top: 0.5em;
+    margin-left: 0.2em;
+}
+.pastArticle:hover {
+    cursor: pointer;
+
+    color: #2980b9;
+}
+.pastArticle:active {
+    color: #169095;
+}
+
+.backgroundTeaser {
+    width: 23.5%;
+    margin: 0.5%;
+
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+.downloadLink {
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.downloadLink:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+
+
+
+/*** Article Properties ***/
+
+.article {
+
+}
+
+.articleTitle {
+    margin-top: 5em;
+    margin-left: 1em;
+
+    text-align: left;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+
+    font-size: 1.4em;
+}
+
+.articleText br {
+    display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 0.5em; /* change this to whatever height you want it */
+}
+.articleText {
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    text-align: left;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.articleMiddleText {
+    margin-left: 11%;
+}
+
+.articleLink{
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.articleLink:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.articleBreaker {
+    margin: 1.5em;
+}
+
+.articleImage {
+    width: 80%;
+    margin-left: 10%;
+    max-height: 34em;
+
+    border: 1px solid #090015;
+    margin-top: 1em;
+
+    -webkit-box-shadow: 0 4px 4px -4px black;
+     -moz-box-shadow: 0 4px 4px -4px black;
+          box-shadow: 0 4px 4px -4px black;
+}
+.articleImage:hover {
+    cursor: pointer;
+}
+
+.articleVideo {
+    max-width: 60%;
+    max-height: 34em;
+    margin-left: 20%;
+
+    border: 1px solid #090015;
+    margin-top: 1em;
+
+    -webkit-box-shadow: 0 4px 4px -4px black;
+     -moz-box-shadow: 0 4px 4px -4px black;
+          box-shadow: 0 4px 4px -4px black;
+}
+
+/*** END article properties ***/
+
