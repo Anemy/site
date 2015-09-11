@@ -246,6 +246,10 @@ body {
 .articleMiddleText {
     margin-left: 11%;
 }
+.boldText {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
 
 .articleLink{
     font-family: 'Questrial', sans-serif;
@@ -281,6 +285,7 @@ body {
 
     border: 1px solid #090015;
     margin-top: 1em;
+    margin-bottom: 0.2em;
 
     -webkit-box-shadow: 0 4px 4px -4px black;
      -moz-box-shadow: 0 4px 4px -4px black;
