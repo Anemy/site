@@ -93,9 +93,9 @@ body {
 
 .blogMiddle {
     position: absolute;
-    left: 28%;
+    left: 22%;
     top: 1em;
-    width: 60%;
+    width: 64%;
 
     text-align: middle;
 
@@ -104,8 +104,8 @@ body {
 
 .blogFixed {
     position: fixed;
-    left: 4%;
-    width: 20%;
+    left: 2%;
+    width: 16%;
 
     /*color: #2ecc71;*/
     color: #110021;
