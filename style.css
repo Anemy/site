@@ -59,7 +59,10 @@ body {
 }
 
 #mePic {
-    width: 16%;
+    width: 15%;
+
+    margin: 1em;
+
     border: 1px;
     border-style: solid;
     border-color: #000020;
@@ -67,9 +70,8 @@ body {
 
 #name {
     font-family: 'Oswald', sans-serif;
-    font-size: 3.5em;
+    font-size: 2.5em;
     color: #000020;
-    margin-top: 1%;
 }
 
 #belowNameLine {

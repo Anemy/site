@@ -93,9 +93,9 @@ body {
 
 .blogMiddle {
     position: absolute;
-    left: 22%;
+    left: 25%;
     top: 1em;
-    width: 64%;
+    width: 50%;
 
     text-align: middle;
 
@@ -292,6 +292,9 @@ body {
     -webkit-box-shadow: 0 4px 4px -4px black;
      -moz-box-shadow: 0 4px 4px -4px black;
           box-shadow: 0 4px 4px -4px black;
+
+    background-color: #F7F7F7;
+    min-height: 4em;
 }
 .articleImage:hover {
     cursor: pointer;

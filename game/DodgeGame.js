@@ -658,7 +658,7 @@ function updateDogPos(modifier) {
                     if(Math.random() < 0.01)
                         randomMessage = "YOUNG $$$$";
                     if(Math.random() < 0.01)
-                        randomMessage = "Far out.";
+                        randomMessage = "Far out";
                     if(Math.random() < 0.03)
                         randomMessage = "Nice Skills!";
                     if(Math.random() < 0.005)
