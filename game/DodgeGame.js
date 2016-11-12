@@ -104,6 +104,10 @@ function getNegative (toNegate) {
 
 function init() {
     canvas = document.getElementById('backgroundCanvas');
+
+    // Focus the game on load.
+    canvas.autofocus;
+
     ctx = canvas.getContext('2d');
 
     gameWidth = window.innerWidth;
@@ -116,10 +120,10 @@ function init() {
     yScale = gameHeight/originalHeight;
 
     // local storage highscore
-    if (localStorage.getItem("rhysHighScorPLZDONTCHEATOMG")) {
+    if (localStorage.getItem("rhysHighScorePLZDONTCHEAT")) {
         // there was a highscore! cool...
-        highScore = localStorage.getItem("rhysHighScorPLZDONTCHEATOMG");
-        savedHighScore = localStorage.getItem("rhysHighScorPLZDONTCHEATOMG");
+        highScore = localStorage.getItem("rhysHighScorePLZDONTCHEAT");
+        savedHighScore = localStorage.getItem("rhysHighScorePLZDONTCHEAT");
     }
 
     console.log("Canvas created, dimensions: " + gameWidth + "x" + gameHeight + " scaling: " + scale);
