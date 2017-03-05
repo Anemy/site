@@ -1,5 +1,9 @@
-.DS_Store
+# Logs
+logs
 *.log
-dist
-.env
-npm-debug.*
+npm-debug.log*
+
+# macOS
+.DS_Store
+local
+npm
