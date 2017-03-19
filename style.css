@@ -108,10 +108,6 @@ body {
     font-weight: 400;
 }
 
-span:hover {
-	cursor: pointer;
-}
-
 a {
 	text-decoration: none;
 	color: #000020;
@@ -120,3 +116,97 @@ a {
 a:visited {
 	text-decoration: none;
 }
+
+
+/**** Start books styling ****/
+
+.books-page {
+    font-family: 'Questrial', sans-serif;
+    color: black;
+}
+
+.back-button {
+    position: fixed;
+    top: 0.25em;
+    left: 0.25em;
+
+    font-size: 1.2em;
+
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+
+    z-index: 2;
+}
+.back-button:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.books-inspired {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.books-page h2 {
+    font-size: 2em;
+
+    padding: 0;
+    margin: 1em;
+}
+
+.books-page h3 {
+    font-size: 0.85em;
+
+    padding: 0;
+    margin-bottom: 2em;
+}
+
+.book-year {
+    font-size: 2em;
+
+    margin: 0.2em;
+    padding: 0;
+}
+
+.book-item {
+    margin: 0.2em;
+    padding: 0;
+}
+
+.book-title {
+    color: #5020F0;
+
+    font-size: 1.1em;
+
+    margin: 0.05em;
+}
+
+.book-author {
+    color: #000;
+
+    font-size: 1.1em;
+}
+
+.year-divider {
+    font-size: 0.2em;
+}
+
+
