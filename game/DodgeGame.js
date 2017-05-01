@@ -42,6 +42,8 @@ var firstTimeFalling = true;
 var doItAgain = false;
 var realLife = false;
 
+let dogLastPos = [];
+
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
 var pop;
@@ -265,8 +267,14 @@ function drawPop() {
             dogImage = dogL;
         else if (pop.facing == RIGHT)
             dogImage = dogR;
-
     }
+
+    // for (let i = 0; i < dogLastPos.length; i++) {
+    //     ctx.globalAlpha = (1 - (i / dogLastPos.length))/2;
+    //     ctx.drawImage(dogImage, dogLastPos[i].x * scale, gameHeight - dogLastPos[i].y, pop.width, pop.width);
+    // }
+    // ctx.globalAlpha = 1;
+    
     //console.log("Yo the dog: " + pop.width +" scaled to: "+ pop.width*scale + " Attempted subtract: " + ((pop.width*scale) - pop.width));
     //console.log("PLZ " + (gameHeight - pop.yPos - ((pop.width*scale) - pop.width)));
     // if(yScale < scale)
@@ -414,8 +422,6 @@ function updateBlocks(delta) {
                         "rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")");
                     parts[k].rotation = Math.random()*359.0;
                     parts[k].rotationVelo = getNegative(Math.random()*359.0);
-
-                    //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
                 }
             }
             blocks.splice(i,1);
@@ -424,13 +430,10 @@ function updateBlocks(delta) {
 
     //see if new blocks be needed
     spawnCount += delta;
-    //console.log(spawnCount+" > "+spawnRate+"  yah  "+delta);
     if(spawnCount > spawnRate) {
         spawnCount = 0;
 
         if(Math.random() < spawnChance) {
-            //console.log("New block!!");
-
             //Add a new block!!!
             var newBlock = new block();
             if(Math.random()*10 > 5) {
@@ -511,6 +514,16 @@ function updateDogPos(modifier) {
         if (pop.xDir < -0.01)
             pop.xDir = 0;
     }
+
+    // Track the dog's last positions.
+    // dogLastPos.unshift({
+    //     x: pop.xPos,
+    //     y: pop.yPos
+    // });
+    
+    // if (dogLastPos.length > 20) {
+    //     dogLastPos.pop();
+    // }
 
     //bottom collision
     if (pop.yPos + (pop.yDir * modifier) < floorSize + pop.width) {
