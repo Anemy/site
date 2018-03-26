@@ -44,6 +44,8 @@ var realLife = false;
 
 let dogLastPos = [];
 
+const HIGHSCORE_KEY = 'rhysHighScorePLZDONTCHEAT';
+
 //position based on bottom of the screen so it's easier for different screen sizes
 //Your character!
 var pop;
@@ -122,10 +124,20 @@ function init() {
     yScale = gameHeight/originalHeight;
 
     // local storage highscore
-    if (localStorage.getItem("rhysHighScorePLZDONTCHEAT")) {
-        // there was a highscore! cool...
-        highScore = localStorage.getItem("rhysHighScorePLZDONTCHEAT");
-        savedHighScore = localStorage.getItem("rhysHighScorePLZDONTCHEAT");
+    if (localStorage.getItem(HIGHSCORE_KEY)) {
+        let testHighscore;
+        try {
+            // Attempt to retrieve & load an existing highscore from local storage.
+            testHighscore = parseInt(localStorage.getItem(HIGHSCORE_KEY));
+
+            highScore = testHighscore;
+            savedHighScore = testHighscore;
+
+            document.getElementById('score').textContent = 'Score: ' + highScore;
+            document.getElementById('highscore').textContent = 'Highscore: ' + highScore;
+        } catch(e) {
+            // Do nothing.
+        }
     }
 
     console.log("Canvas created, dimensions: " + gameWidth + "x" + gameHeight + " scaling: " + scale);
@@ -222,10 +234,6 @@ function render() {
     ctx.fillRect(0, (gameHeight-floorSize), gameWidth, 4);
     ctx.fillRect(0, (gameHeight-floorSize) + 8, gameWidth, 2);
     ctx.fillRect(0, (gameHeight-floorSize) + 14, gameWidth, 1);
-
-    ctx.font="30px Oswald";
-    ctx.fillText("HIGHSCORE: "+highScore, 2, 30);
-    ctx.fillText("SCORE: "+score, 2, 60);
 }
 
 function drawBlocks() {
@@ -324,7 +332,7 @@ function killPop() {
     keepUpdating = false;
 
     if(savedHighScore < highScore) {
-        localStorage.setItem("rhysHighScorPLZDONTCHEATOMG", highScore);
+        localStorage.setItem(HIGHSCORE_KEY, highScore);
     }
 
     setTimeout( function() {
@@ -343,7 +351,7 @@ function killPop() {
                 parts[k].rotation = Math.random()*359.0;
                 parts[k].rotationVelo = getNegative(Math.random()*359.0);
 
-                //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
+                // console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
             }
         }
 
@@ -544,29 +552,33 @@ function updateDogPos(modifier) {
                         }
                     }
                     score += currentCombo;
+                    document.getElementById('score').textContent = 'Score: ' + score;
+
                     if(highScore < score) {
                         highScore = score;
 
+                        document.getElementById('highscore').textContent = 'Highscore: ' + score;
                     }
                 }
                 comboEnded = true;
                 currentCombo = 0;
             }
-
-        }
-        else {
+        } else {
             //combo things
-            if(currentCombo > 1) {
-                for(k = 0; k < numberOfMsg; k++) {
+            if (currentCombo > 1) {
+                for (k = 0; k < numberOfMsg; k++) {
                     if(MSGs[k].alive == false) {
-                        MSGs[k] = new msg(true, "+"+currentCombo + " combo",120, gameHeight - 120,-1, "black");
+                        MSGs[k] = new msg(true, "+" + currentCombo + " combo",120, gameHeight - 120,-1, "black");
                         //"rgb(" + blocks[i].colors[0] + "," + blocks[i].colors[1] + "," + blocks[i].colors[2] + ")"
                         break;
                     }
                 }
                 score += currentCombo;
-                if(score > highScore) {
+                document.getElementById('score').textContent = 'Score: ' + score;
+
+                if (score > highScore) {
                     highScore = score;
+                    document.getElementById('highscore').textContent = 'Highscore: ' + score;
                 }
             }
             comboEnded = true;
@@ -578,9 +590,10 @@ function updateDogPos(modifier) {
             pop.jump = false;
         }
 
-        if(jumpingOverBlock && !firstTimeFalling) {
-            if(comboEnded == false)
+        if (jumpingOverBlock && !firstTimeFalling) {
+            if (comboEnded == false) {
                 currentCombo++;
+            }
 
             //message for score
             for(k = 0; k < numberOfMsg; k++) {
@@ -591,6 +604,7 @@ function updateDogPos(modifier) {
                 }
             }
             score++;
+            document.getElementById('score').textContent = 'Score: ' + score;
 
             jumpingOverBlock = false;
             for(k = 0; k < numberOfMsg; k++) {
@@ -717,6 +731,7 @@ function updateDogPos(modifier) {
             }
             if(highScore < score) {
                 highScore = score;
+                document.getElementById('highscore').textContent = 'Highscore: ' + score;
             }
         }
         else if(firstTimeFalling) {
@@ -731,7 +746,7 @@ function updateDogPos(modifier) {
 window.addEventListener('keydown', this.keyPressed , false);
 
 function keyPressed(e) {
-    //document.getElementById("p1").innerHTML = "New text!";
+    //document.getElementById("p1").textContent = "New text!";
     var key = e.keyCode;
     e.preventDefault();
 

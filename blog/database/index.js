@@ -57,8 +57,10 @@ let introductionPage = {
       let percentageOfYScroll = (scroll - this.y) * (1/h);
       percentageOfYScroll = percentageOfYScroll < 0 ? 0 : percentageOfYScroll;
 
-      this.rectangles[i].attr('y', scroll/2)
-                        .attr('width', ((w/2)/this.dataPoints)*(percentageOfYScroll))
+      let fullPercentageOfScroll = ((scroll - this.y) + h) * (1/(h*3));
+
+      this.rectangles[i].attr('y', h/2 + (scroll - this.y)/2)
+                        .attr('width', ((w/2)/this.dataPoints)*(fullPercentageOfScroll))
                         .attr('h', ((w/2)/this.dataPoints));
                           // .attr('x', ((w/2)/this.dataPoints) * (i+1) + (Math.sin(scroll * (Math.PI/360)) * 40));
     }
@@ -102,7 +104,7 @@ $(document).ready(() => {
   resetWebpageElements();
 
   $('.js-scroll-down-box').click(() => {
-    $('html, body').animate({scrollTop: introduction.y * h}, 800);
+    $('html, body').animate({scrollTop: introductionPage.y}, 800);
   });
 })
 

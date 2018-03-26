@@ -72,6 +72,10 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 2.5em;
     color: #000020;
+    background: url(cy-twombly.jpg) 184px -90px no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
 }
 
 #belowNameLine {
@@ -210,3 +214,18 @@ a:visited {
 }
 
 
+
+
+.score {
+    font-family: 'Oswald', sans-serif;
+    color: #222;
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+#score {
+    top: 2em;
+}
