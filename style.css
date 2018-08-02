@@ -229,3 +229,11 @@ a:visited {
 #score {
     top: 2em;
 }
+
+#svgurtSvg {
+    height: 30px;
+    width: 90px;
+    margin-top: -20px;
+    padding-top: 18px;
+    vertical-align: -webkit-baseline-middle;	
+}
