@@ -103,13 +103,31 @@ body {
     font-weight: 400;
 }
 
+#howfarosouth span {
+  display: inline-block;
+}
+
+.character-rotate {
+	margin-left: 0.05em;
+	margin-right: 0.05em;
+	top: -0.15em;
+	position: relative;
+	display: inline-block;
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	/* font-weight: 200; */
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
 #options {
-    font-family: Calibri, sans-serif;
-    /*font-family: 'Raleway', sans-serif;*/
-    font-size: 1.0em;
-    color: #000020;
-    margin-top: 1%;
-    font-weight: 400;
+	font-family: Calibri, sans-serif;
+	/*font-family: 'Raleway', sans-serif;*/
+	font-size: 1.0em;
+	color: #000020;
+	margin-top: 1%;
+	font-weight: 400;
 }
 
 a {
