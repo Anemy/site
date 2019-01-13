@@ -110,7 +110,6 @@ body {
 .character-rotate {
 	margin-left: 0.05em;
 	margin-right: 0.05em;
-	top: -0.15em;
 	position: relative;
 	display: inline-block;
 	-moz-transform: rotate(180deg);
