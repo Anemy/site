@@ -45,26 +45,21 @@ table {
 
 /* MY THINGS */
 
+#backgroundCanvas{
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index:-1;
+}
+
 body {
+    background-size: 100%;
     color: #ecf0f1;
-}
-
-.container {
-    max-width: 800px;
-    text-align: left;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.container a {
-    display: table;
-    margin-bottom: 10px;
-    font-size: 24px;
+    text-align: center;
 }
 
 #mePic {
-    width: 200px;
-    max-width: 20%;
+    width: 15%;
 
     margin: 1em;
 
@@ -75,34 +70,28 @@ body {
 
 #name {
     font-family: 'Oswald', sans-serif;
-    /* font-size: 2.5em; */
-    font-size: 64px;
+    font-size: 2.5em;
     color: #000020;
-    /* background: url(cy-twombly.jpg) 200px -90px no-repeat; */
-    background: url(sofloo.png) -64px -140px no-repeat;
-    background-size: 60%;
-    /* background-blend-mode: color-burn; */
-    background-clip: text;
+    background: url(cy-twombly.jpg) 200px -90px no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
 }
 
-#belowAboutLine {
-    width: 200px;
-    height: 1px;
-    text-align: left;
-    /* float: left; */
-    /* clear: both; */
-    color: #111125;
-    background-color: #111125;
-    border-color: #111125;
-    margin: 24px 0;
-    margin-right: auto;
+#belowNameLine {
+    width: 30%;
+    height: 0.1px;
+    color: #000020;
+    background-color: #000020;
+    border-color: #000020;
 }
 
-#belowAboutLine::after {
-    clear: both;
+#belowAboutLine {
+    width: 24%;
+    height: 0.01px;
+    color: #000020;
+    background-color: #000020;
+    border-color: #000020;
 }
 
 #about {
@@ -115,7 +104,7 @@ body {
 }
 
 #howfarosouth span {
-    display: inline-block;
+  display: inline-block;
 }
 
 .character-rotate {
@@ -134,8 +123,9 @@ body {
 #options {
 	font-family: Calibri, sans-serif;
 	/*font-family: 'Raleway', sans-serif;*/
-	color: #111125;
-	margin-top: 1em;
+	font-size: 1.0em;
+	color: #000020;
+	margin-top: 1%;
 	font-weight: 400;
 }
 
