@@ -79,8 +79,10 @@ body {
     font-size: 64px;
     color: #000020;
     /* background: url(cy-twombly.jpg) 200px -90px no-repeat; */
-    background: url(sofloo.png) -64px -140px no-repeat;
-    background-size: 60%;
+    /* background: url(sofloo.png) -64px -140px no-repeat; */
+    background: url(sofloo.png) -80px -140px no-repeat;
+    /* background-size: 60%; */
+    background-size: 512px;
     /* background-blend-mode: color-burn; */
     background-clip: text;
     -webkit-background-clip: text;
