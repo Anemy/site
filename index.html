@@ -1,90 +1,169 @@
 <html>
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48092598-3"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', 'UA-48092598-3');
-        </script>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48092598-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-        <link rel="stylesheet" type="text/css" href="style.css">
+        gtag('config', 'UA-48092598-3');
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-        <title>Rhys Howell</title>
+    <title>Rhys Howell</title>
 
-        <link href='https://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Raleway:600,500,300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:600,500,300,400' rel='stylesheet' type='text/css'>
 
-        <link rel="shortcut icon" href="favicon.png"/>
+    <link rel="shortcut icon" href="favicon.png" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta property="og:image" content="sofloo.png" />
-        <link rel="manifest" href="manifest.json">
-    </head>
-    <body onLoad="init()">
-        <div class="container">
-            <img id="mePic" src="me.jpg">
-            <h1 id="name">Rhys Howell</h1>
-            <div id="belowAboutLine"></div>
-            <!-- <nav id="options">
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://rhyshowell.com/Resume_Rhys_Howell.pdf"><span id="resume">Resume</span></a> |  -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://www.github.com/Anemy"><span id="github">Github</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://artsable.com/rhys">My Artsable</a>
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rh_y_s">Twitter</a>
-                <a target="_blank" rel="noopener noreferrer" href="https://howfarsouth.com"><span id="howfarsouth">HOW <span>F<span class="character-rotate">A</span>R</span> SOUTH<span /></a>
-                <a target="_blank" rel="noopener noreferrer" href="http://mongodb.com"><span id="mongo">Mongo<span style="color: #69b241;">DB</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://artsable.com">Artsable</a>
-                <a target="_blank" rel="noopener noreferrer" href="http://stick.gg"><span id="stick">Stick <span style="color: #3498db;">G</span><span style="color: #e74c3c;">G</span></span></a>
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://generals.io"><span id="generals">Generals.io</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://purdueseds.com"><span id="seds">Purdue SEDS</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="https://www.purdueusb.com/"><span id="seds">USB</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://pley.usb.cs.purdue.edu"><span id="seds">Pley</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="books.html"><span id="blog">Books</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="http://rhyshowell.com/blog.html"><span id="blog">Blog</span></a> -->
-                <!-- <a target="_blank" rel="noopener noreferrer" href="https://sofloo.com"><span id="sofloo">Sofl<span style="color: #3498db;">o</span><span style="color: #e74c3c;">o</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://anemy.github.io/gravity">Gravity</a>
-                <a target="_blank" rel="noopener noreferrer" href="http://gamexfer.com"><span id="mongo">Game<span style="color: #f1c40f;">Xfer</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="http://amishhero.com"><span id="amish">Amish Hero</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://wearwiki.com"><span id="wearwiki">WearWiki</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://anemy.github.io/sofloo-spot"><span id="sofloo-spot">Sp<span style="color: #3498db;">o</span>t</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UC_T_Jfjj_XvWzamrYXCSYcA"><span id="youtube">YouTube</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://svgurt.com"><img id="svgurtSvg" src="svgurt-output.svg" alt="Svgurt"/></a>
-            <nav> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta property="og:image" content="sofloo.png" />
+    <link rel="manifest" href="manifest.json">
+</head>
 
-            <nav class="media-links">
-                <a target="_blank" rel="noopener noreferrer" href="http://www.github.com/Anemy"><span id="github">Github</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://artsable.com/rhys">My Artsable</a>
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rh_y_s">Twitter</a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UC_T_Jfjj_XvWzamrYXCSYcA"><span id="youtube">YouTube</span></a>
-            </nav>
+<body>
+    <div class="container">
+        <img id="mePic" src="me.jpg">
+        <h2 id="name">Rhys Howell</h2>
+        <div id="belowAboutLine"></div>
+        <nav class="media-links">
+            <a class="nice-link" target="_blank" rel="noopener" href="http://www.github.com/Anemy" data-title="Github"><span id="github">Github</span></a>
+            <a class="nice-link" data-title="Artsable" target="_blank" rel="noopener" href="https://artsable.com/rhys">Artsable</a>
+            <a class="nice-link" data-title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/rh_y_s">Twitter</a>
+            <a class="nice-link" data-title="YouTube" target="_blank" rel="noopener"
+                href="https://www.youtube.com/channel/UC_T_Jfjj_XvWzamrYXCSYcA"><span id="youtube">YouTube</span></a>
+        </nav>
 
-            <div class="projects-container">
-                <h2>Projects</h2>
-                <div class="project-container">
-                    <h3>Project Name</h3>
-                    <p>About the project</p>
-                    <div>
-                        Some screenshots
+        <div class="projects-container">
+            <h3>Projects & Works</h3>
+            <div class="project-container">
+                <h3>
+                    <a target="_blank" rel="noopener" href="http://mongodb.com" class="nice-link" data-title="MongoDB">
+                        MongoDB
+                    </a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        I'm currently working at MongoDB building <a class="nice-link" data-title="Compass" href="https://www.mongodb.com/products/compass" target="_blank" rel="noopener">Compass</a> and the <a class="nice-link" data-title="MongoDB VSCode extension" href="https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode" target="_blank" rel="noopener">MongoDB VSCode extension</a>. Previously I worked on <a class="nice-link" data-title="Atlas" href="https://www.mongodb.com/cloud/atlas" target="_blank" rel="noopener">Atlas</a> - a favorite project was building an interactive map to show and configure your write latency around the world when you have a globally sharded database cluster (screenshot below).
+                    </p>
+                    <img src="https://i.imgur.com/50XLsZ9.jpg" class="project-screenshot-full">
+                </div>
+            </div>
+            <div class="project-container">
+                <h3>
+                    <a target="_blank" rel="noopener" href="https://artsable.com" class="nice-link" data-title="Artsable">Artsable</a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        Founded and built a <a class="nice-link" data-title="generative art" href="https://artsable.com/blog/what-is-generative-art" target="_blank" rel="noopener">generative art</a> community and marketplace.
+                    </p>
+                    <p>
+                        Users can create artworks on Artsable using code, share the artworks, interact with other users, have the artworks printed on various products, and sell the products which are being printed.
+                    </p>
+                    <img src="https://i.imgur.com/cg4tC50.jpg" class="project-screenshot-full">
+                    <p>
+                        I think there are a lot of people who are visual learners who haven't been introduced to code - yet. <a class="nice-link" data-title="Artsable" target="_blank" rel="noopener" href="https://artsable.com">Artsable</a> is aimed to be a platform for people to learn code and to express themselves with code. 
+                    </p>
+                    <div class="project-screenshots">
+                        <!-- <img class="project-screenshot-4" src="https://i.imgur.com/28Q6UvA.png"/>
+                        <img class="project-screenshot-4" src="https://i.imgur.com/pBfVaA9.png"/>
+                        <img class="project-screenshot-4" src="https://i.imgur.com/zykyBkt.png"/>
+                        <img class="project-screenshot-4" src="https://i.imgur.com/U0hdzr5.png"/> -->
+                        <img class="project-screenshot project-screenshot-3" src="https://i.imgur.com/xdCntRV.png"/>
+                        <img class="project-screenshot project-screenshot-3" src="https://i.imgur.com/OADvjkh.png"/>
+                        <img class="project-screenshot project-screenshot-3" src="https://i.imgur.com/WtfLW2O.png"/>
+                        
                     </div>
                 </div>
             </div>
+            <div class="project-container">
+                <h3>
+                    <a target="_blank" rel="noopener" href="https://howfarsouth.com">
+                        HOW <span>F<span class="character-rotate">A</span>R</span> SOUTH</span>
+                    </a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        Biked South from Seattle with my good friend Adam. (And made a nice website for writing about the journey).
+                    </p>
+                    <img src="https://i.imgur.com/N1uddSn.png" class="project-screenshot-full" alt="How Far South Website"/>
+                </div>
+            </div>
+            <div class="project-container">
+                <h3>
+                    <a class="nice-link" data-title="Sofloo" target="_blank" rel="noopener" href="https://sofloo.com">
+                        Sofl<span style="color: #3498db;">o</span>o
+                    </a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        A few friends and I wanted to bring the <a class="nice-link" data-title="Sofloo Spot" target="_blank" rel="noopener" href="https://anemy.github.io/sofloo-spot">Sofloo Sp<span style="color: #3498db;">o</span>t</a> algorithm into the real world, so we built a <a class="nice-link" data-title="website" target="_blank" rel="noopener" href="https://sofloo.com"></a>website</a> to find a design created by the algorithm and purchase it on a t-shirt.
+                    </p>
+                </div>
+                <img src="https://i.imgur.com/gKLpRvy.png" class="project-screenshot-full" alt="Sofloo"/>
+            </div>
+            <div class="project-container">
+                <h3>
+                    <a class="nice-link" data-title="WearWiki" target="_blank" rel="noopener" href="https://wearwiki.com">WearWiki</a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        Two friends and I built a <a target="_blank" rel="noopener" href="https://wearwiki.com" class="nice-link" data-title="website">website</a> which let's a user find a <a target="_blank" rel="noopener" href="https://wearwiki.com/browse" class="nice-link" data-title="random">random</a> Wikipedia page, pulls creative commons images from it, and prints them on t-shirts. With each shirt sold we send money to Wikipedia.
+                    </p>
+                </div>
+            </div>
+            <div class="project-container">
+                <h3>
+                    <a class="nice-link" data-title="Stick GG" target="_blank" rel="noopener" href="http://stick.gg"><span id="stick">Stick <span
+                        style="color: #3498db;">G</span><span style="color:
+                            #e74c3c;">G</span></span></a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        Built and designed an online realtime multiplayer game with 3 friends. It has accounts, leaderboards, many game modes, unlockable characters, many maps, and more.
+                    </p>
+                </div>
+            </div>
+            <div class="project-container">
+                <h3>
+                    <a target="_blank" rel="noopener" href="https://svgurt.com" class="nice-link" data-title="Svgurt">
+                        Svgurt
+                    </a>
+                </h3>
+                <div class="project-description">
+                    <p>
+                        Wrote a configurable, interactive image to SVG converting tool. Published on npm. <a class="nice-link" data-title="live demo" target="_blank" rel="noopener" href="https://svgurt.com/#/demo">live demo</a>
+                    </p>
+                    <img class="project-screenshot-full" src="https://i.imgur.com/M3AOFi7.png" alt="Svgurt"/>
+                </div>
+            </div>
+            <div class="project-container smaller-projects">
+                <h3>Smaller projects</h3>
+                <a class="nice-link" data-title="Gravity" target="_blank" rel="noopener" href="https://anemy.github.io/gravity">
+                    Gravity
+                </a>
+                <a target="_blank" rel="noopener" href="http://gamexfer.com" class="nice-link" data-title="Game Xfer">
+                    Game<span style="color: #f1c40f;">Xfer</span>
+                </a>
+                <a target="_blank" rel="noopener" href="http://amishhero.com" class="nice-link" data-title="Amish Hero">
+                    Amish Hero
+                </a>
+                <a target="_blank" rel="noopener" href="https://anemy.github.io/sofloo-spot" class="nice-link" data-title="Sofloo Spot">
+                    Sofloo Sp<span style="color: #3498db;">o</span>t
+                </a>
+            </div>
 
-
-            <nav id="projects">
-                <a target="_blank" rel="noopener noreferrer" href="https://howfarsouth.com"><span id="howfarsouth">HOW <span>F<span class="character-rotate">A</span>R</span> SOUTH<span /></a>
-                <a target="_blank" rel="noopener noreferrer" href="http://mongodb.com"><span id="mongo">Mongo<span style="color: #69b241;">DB</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://artsable.com">Artsable</a>
-                <a target="_blank" rel="noopener noreferrer" href="http://stick.gg"><span id="stick">Stick <span style="color: #3498db;">G</span><span style="color: #e74c3c;">G</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://sofloo.com"><span id="sofloo">Sofl<span style="color: #3498db;">o</span><span style="color: #e74c3c;">o</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://anemy.github.io/gravity">Gravity</a>
-                <a target="_blank" rel="noopener noreferrer" href="http://gamexfer.com"><span id="mongo">Game<span style="color: #f1c40f;">Xfer</span></span></a>
-                <a target="_blank" rel="noopener noreferrer" href="http://amishhero.com"><span id="amish">Amish Hero</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://wearwiki.com"><span id="wearwiki">WearWiki</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://anemy.github.io/sofloo-spot"><span id="sofloo-spot">Sp<span style="color: #3498db;">o</span>t</span></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://svgurt.com"><img id="svgurtSvg" src="svgurt-output.svg" alt="Svgurt"/></a>
-            <nav>
+            <div className="project-container">
+                <p>
+                    Coming soon: Some generative art pieces. For now some can be found on <a class="nice-link" data-title="Artsable" target="_blank" rel="noopener" href="https://artsable.com/rhys">Artsable</a> and <a class="nice-link" data-title="Gituhb" target="_blank" rel="noopener" href="https://github.com/anemy">Github</a>.
+                </p>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

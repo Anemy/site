@@ -1,0 +1,276 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* MY THINGS */
+
+body {
+    color: #ecf0f1;
+    font-family: Arial;
+}
+
+.container {
+    max-width: 800px;
+    text-align: left;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.container a {
+    display: table;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+#mePic {
+    width: 200px;
+    max-width: 20%;
+
+    margin: 1em;
+
+    border: 1px;
+    border-style: solid;
+    border-color: #000020;
+	
+    -webkit-transform: scaleX(-1) rotate(180deg);
+    transform: scaleX(-1) rotate(180deg);
+}
+
+#name {
+    font-family: 'Oswald', sans-serif;
+    /* font-size: 2.5em; */
+    font-size: 64px;
+    color: #000020;
+    /* background: url(cy-twombly.jpg) 200px -90px no-repeat; */
+    /* background: url(sofloo.png) -64px -140px no-repeat; */
+    background: url(sofloo.png) -80px -140px no-repeat;
+    /* background-size: 60%; */
+    background-size: 512px;
+    /* background-blend-mode: color-burn; */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+#belowAboutLine {
+    width: 200px;
+    height: 1px;
+    text-align: left;
+    /* float: left; */
+    /* clear: both; */
+    color: #111125;
+    background-color: #111125;
+    border-color: #111125;
+    margin: 24px 0;
+    margin-right: auto;
+}
+
+#belowAboutLine::after {
+    clear: both;
+}
+
+#about {
+    font-family: Calibri, sans-serif;
+    /*font-family: 'Raleway', sans-serif;*/
+    font-size: 1.8em;
+    color: #000020;
+    margin-top: 0%;
+    font-weight: 400;
+}
+
+#howfarosouth span {
+    display: inline-block;
+}
+
+.character-rotate {
+	margin-left: 0.05em;
+	margin-right: 0.05em;
+	position: relative;
+	display: inline-block;
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	/* font-weight: 200; */
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+#options {
+	font-family: Calibri, sans-serif;
+	/*font-family: 'Raleway', sans-serif;*/
+	color: #111125;
+	margin-top: 1em;
+	font-weight: 400;
+}
+
+#projects {
+    font-family: Calibri, sans-serif;
+	color: #21313c;
+	margin-top: 1em;
+	font-weight: 400;
+}
+
+a {
+	text-decoration: none;
+	color: #000020;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+
+/**** Start books styling ****/
+
+.books-page {
+    font-family: 'Questrial', sans-serif;
+    color: black;
+}
+
+.back-button {
+    position: fixed;
+    top: 0.25em;
+    left: 0.25em;
+
+    font-size: 1.2em;
+
+    font-family: 'Questrial', sans-serif;
+
+    color: #110021;
+    text-decoration: none;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+
+    z-index: 2;
+}
+.back-button:hover {
+    cursor: pointer;
+
+    border-color: #110021;
+}
+
+.books-inspired {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.books-page h2 {
+    font-size: 2em;
+
+    padding: 0;
+    margin: 1em;
+}
+
+.books-page h3 {
+    font-size: 0.85em;
+
+    padding: 0;
+    margin-bottom: 2em;
+}
+
+.book-year {
+    font-size: 2em;
+
+    margin: 0.2em;
+    padding: 0;
+}
+
+.book-item {
+    margin: 0.2em;
+    padding: 0;
+}
+
+.book-title {
+    color: #5020F0;
+
+    font-size: 1.1em;
+
+    margin: 0.05em;
+}
+
+.book-author {
+    color: #000;
+
+    font-size: 1.1em;
+}
+
+.year-divider {
+    font-size: 0.2em;
+}
+
+.score {
+    font-family: 'Oswald', sans-serif;
+    color: #222;
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+#score {
+    top: 2em;
+}
+
+#svgurtSvg {
+    height: 30px;
+    width: 90px;
+    margin-top: -20px;
+    padding-top: 18px;
+    vertical-align: -webkit-baseline-middle;	
+}
