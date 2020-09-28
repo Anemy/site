@@ -144,6 +144,13 @@ body {
 	font-weight: 400;
 }
 
+#projects {
+    font-family: Calibri, sans-serif;
+	color: #21313c;
+	margin-top: 1em;
+	font-weight: 400;
+}
+
 a {
 	text-decoration: none;
 	color: #000020;
