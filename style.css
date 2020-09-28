@@ -27,8 +27,8 @@ a {
     width: 0;
     text-decoration: underline;
     transition: all .25s ease 0s;
-    -webkit-text-decoration-color: #2684ff;
-    text-decoration-color: #2684ff;
+    -webkit-text-decoration-color: #3ab1cd;
+    text-decoration-color: #3ab1cd;
     overflow: hidden;
 }
 .nice-link:hover:after {
@@ -65,10 +65,6 @@ a:visited {
     max-width: 20%;
 
     margin-top: 1em;
-
-    border: 1px;
-    border-style: solid;
-    border-color: #ecf0f1;
 	
     -webkit-transform: scaleX(-1) rotate(180deg);
     transform: scaleX(-1) rotate(180deg);
@@ -94,14 +90,15 @@ a:visited {
 }
 
 #belowAboutLine {
-    width: 200px;
+    width: 20%;
     height: 1px;
     text-align: left;
     /* float: left; */
     /* clear: both; */
-    color: #ecf0f1;
+    /* color: #ecf0f1;
     background-color: #ecf0f1;
-    border-color: #ecf0f1;
+    border-color: #ecf0f1; */
+    background: #3ab1cd;
     margin: 2em 0;
     margin-top: 1em;
     margin-right: auto;
@@ -109,10 +106,6 @@ a:visited {
 
 #belowAboutLine::after {
     clear: both;
-}
-
-#howfarosouth span {
-    display: inline-block;
 }
 
 .character-rotate {
