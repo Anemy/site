@@ -49,8 +49,12 @@ a:visited {
     padding: 10px;
 }
 
+.media-links {
+    margin: 2em auto;
+}
+
 .media-links a {
-    margin: 2px;
+    margin: 3px;
 }
 
 /*
@@ -123,7 +127,7 @@ a:visited {
 
 .project-container {
     padding: 0 0.5em;
-    padding-bottom: 0.5em;
+    padding-bottom: 2em;
 }
 
 .project-description {
