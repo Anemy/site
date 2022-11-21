@@ -167,6 +167,8 @@ a:visited {
 .books-page {
     font-family: 'Questrial', sans-serif;
     color: black;
+    margin: 48px auto;
+    max-width: 1024px;
 }
 
 .back-button {
